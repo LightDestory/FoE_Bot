@@ -1,19 +1,26 @@
-FoE Bot v. 0.3 - Change report
+FoE Bot v. 0.4 - Change report
 ------------------------------------------------------------------
 
 /////////////////////////////////////////
 ///Date: 2016/09/05
 ///Subject: Fixes
-///Editor: Alex
+///Editor: LightDestory
 /////////////////////////////////////////
 - Fixed Check for Update
 - Added Flag icon for languages
 - Fixed Missing Images Resource, now they are embed with .exe!
 
 /////////////////////////////////////////
+///Date: 2016/09/05
+///Subject: Fixed Version
+///Editor: LightDestory
+/////////////////////////////////////////
+- Fixed Version Number
+
+/////////////////////////////////////////
 ///Date: 2016/09/04
 ///Subject: Alpha 0.3
-///Editor: Alex
+///Editor: LightDestory
 /////////////////////////////////////////
 - Improved GUI
 - Check for Update is now working
