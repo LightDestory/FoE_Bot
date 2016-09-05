@@ -10,7 +10,7 @@ A simple work in progrss Bot for FoE written with AutoIT
 
 ## :large_orange_diamond: TODO :scream:
 - [x] Basic Function
-- [ ] GUI
+- [x] GUI
 - [ ] Auto-Farm Money
 
 ## :large_orange_diamond: License :copyright:
