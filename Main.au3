@@ -6,7 +6,7 @@ Global $Version = 0.4
 Global $BuildType = "Alpha"
 Global $UpdateURL = "https://raw.githubusercontent.com/LightDestory/FoE_Bot/master/version.txt"
 Global $GitHubURL = "https://github.com/LightDestory/FoE_Bot"
-Global $WebsiteURL = "http://www.lightdestoryweb.altervista.org/blog"
+Global $WebsiteURL = "http://www.lightdestoryweb.altervista.org/"
 #include <ResourcesEx.au3>
 #include <Language\Languages.au3>
 #include <FoE.au3>
