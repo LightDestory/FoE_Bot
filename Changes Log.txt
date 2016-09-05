@@ -1,0 +1,39 @@
+FoE Bot v. 0.3 - Change report
+------------------------------------------------------------------
+
+/////////////////////////////////////////
+///Date: 2016/09/05
+///Subject: Fixes
+///Editor: Alex
+/////////////////////////////////////////
+- Fixed Check for Update
+- Added Flag icon for languages
+- Fixed Missing Images Resource, now they are embed with .exe!
+
+/////////////////////////////////////////
+///Date: 2016/09/04
+///Subject: Alpha 0.3
+///Editor: Alex
+/////////////////////////////////////////
+- Improved GUI
+- Check for Update is now working
+
+/////////////////////////////////////////
+///Date: 2016/09/03
+///Subject: General Improvement
+///Editor: LightDestory
+/////////////////////////////////////////
+- New GUI
+- Improvement of MultiLanguage
+- Initial CheckUpdate code (it is just a scratch, nothing is working for now!)
+
+/////////////////////////////////////////
+///Date: 2016/09/02
+///Subject: New Version 0.2
+///Editor: LightDestory
+/////////////////////////////////////////
+- Initial GUI
+- Initial Multi Language System
+
+------------------------------------------------------------------
+Created with ISN AutoIt Studio 1.02

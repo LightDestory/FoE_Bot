@@ -1,0 +1,187 @@
+; -- Created with ISN Form Studio 2 for ISN AutoIt Studio -- ;
+#include <StaticConstants.au3>
+#include <GUIConstantsEx.au3>
+#include <WindowsConstants.au3>
+#Include <GuiButton.au3>
+#include <ComboConstants.au3>
+
+$LangSelector = GUICreate("Select a Language",310,86,-1,-1,-1,-1)
+GUISetOnEvent($GUI_EVENT_CLOSE, "_Exit", $LangSelector)
+$langinfo = GUICtrlCreateLabel("Select Language:",15,25,89,15,-1,-1)
+GUICtrlSetBkColor(-1,"-2")
+$LangSelList = GUICtrlCreateCombo("",103,20,128,21,$CBS_DROPDOWNLIST,-1)
+GUICtrlSetData(-1,"English|Italian")
+GUICtrlSetOnEvent(-1,"EnableSetLanguage")
+$langflag = GUICtrlCreatePic("",242,19,50,50,-1,-1)
+$SetButton = GUICtrlCreateButton("Select",15,46,216,30,-1,-1)
+GUICtrlSetOnEvent(-1,"SetLanguage")
+GUICtrlSetState(-1,BitOr($GUI_SHOW,$GUI_DISABLE))
+Func SetLangFlag()
+	Switch(GUICtrlRead($LangSelList))
+		Case "English"
+			_Resource_SetToCtrlID($langflag, "en")
+		Case "Italian"
+			_Resource_SetToCtrlID($langflag, "it")
+	EndSwitch
+EndFunc
+Func EnableSetLanguage()
+	GUICtrlSetState($SetButton, $GUI_ENABLE)
+	SetLangFlag()
+EndFunc
+Func SetLanguage()
+	Switch(GUICtrlRead($LangSelList))
+		Case "English"
+			$CurrentLang = $LANG_EN
+		Case "Italian"
+			$CurrentLang = $LANG_IT
+	EndSwitch
+	GUIDelete($LangSelector)
+EndFunc
+
+
+
+#cs
+[gui]
+Handle_deklaration=default
+Handle_deklaration_const=false
+title=Select a Language
+breite=310
+hoehe=86
+style=-1
+exstyle=-1
+bgcolour=0xF0F0F0
+bgimage=none
+handle=LangSelector
+parent=
+code=
+xpos=-1
+ypos=-1
+center_gui=true
+title_textmode=normal
+isf_include_once=false
+only_controls_in_isf=false
+const_modus=default
+gui_event_close=_Exit
+gui_event_minimize=
+gui_event_restore=
+gui_event_maximize=
+gui_event_mousemove=
+gui_event_primarydown=
+gui_event_primaryup=
+gui_event_secoundarydown=
+gui_event_secoundaryup=
+gui_event_resized=
+gui_event_dropped=
+[0x00061520]
+handle=402
+locked=0
+resize=
+code=
+type=label
+x=15
+y=25
+width=89
+height=15
+text=Select Language:
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=-2
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=langinfo
+func=
+bgimage=
+order=0
+tabpage=-1
+iconindex=
+textmode=text
+[0x00051524]
+handle=403
+locked=1
+resize=
+code=Func SetLangFlag()[BREAK]	Switch(GUICtrlRead($LangSelList))[BREAK]		Case "English"[BREAK]			_Resource_SetToCtrlID($langflag, "en")[BREAK]		Case "Italian"[BREAK]			_Resource_SetToCtrlID($langflag, "it")[BREAK]	EndSwitch[BREAK]EndFunc[BREAK]Func EnableSetLanguage()[BREAK]	GUICtrlSetState($SetButton, $GUI_ENABLE)[BREAK]	SetLangFlag()[BREAK]EndFunc[BREAK]Func SetLanguage()[BREAK]	Switch(GUICtrlRead($LangSelList))[BREAK]		Case "English"[BREAK]			$CurrentLang = $LANG_EN[BREAK]		Case "Italian"[BREAK]			$CurrentLang = $LANG_IT[BREAK]	EndSwitch[BREAK]	GUIDelete($LangSelector)[BREAK]EndFunc
+type=button
+x=15
+y=46
+width=216
+height=30
+text=Select
+tooltip=
+state=$GUI_SHOW+$GUI_DISABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=SetButton
+func=SetLanguage
+bgimage=
+order=3
+tabpage=-1
+iconindex=
+textmode=text
+[0x00051528]
+handle=404
+locked=0
+resize=
+code=
+type=combo
+x=103
+y=20
+width=128
+height=21
+text=English|Italian
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=$CBS_DROPDOWNLIST
+exstyle=
+textcolour=0x000000
+bgcolour=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=LangSelList
+func=EnableSetLanguage
+bgimage=
+order=1
+tabpage=-1
+iconindex=
+textmode=text
+[0x001004B2]
+handle=413
+locked=0
+resize=
+code=
+type=image
+x=242
+y=19
+width=50
+height=50
+tooltip=
+text=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=langflag
+func=
+bgimage=
+order=2
+tabpage=-1
+iconindex=
+textmode=text
+#ce

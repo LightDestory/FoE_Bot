@@ -1,0 +1,417 @@
+; -- Created with ISN Form Studio 2 for ISN AutoIt Studio -- ;
+#include <StaticConstants.au3>
+#include <GUIConstantsEx.au3>
+#include <WindowsConstants.au3>
+#Include <GuiButton.au3>
+#include <GuiTab.au3>
+
+$FoE_GUI = GUICreate("FoE Bot By LightDestory",350,350,-1,-1,-1,-1)
+GUISetOnEvent($GUI_EVENT_CLOSE, "_Exit", $FoE_GUI)
+$tab = GUICtrlCreatetab(0,0,352,352,-1,-1)
+GuiCtrlSetState(-1,2048)
+$BotTab = GUICtrlCreateTabItem("Bot")
+$SettingTab = GUICtrlCreateTabItem("[SETTING_TAB_TITLE]")
+$AboutTab = GUICtrlCreateTabItem("[ABOUT_TAB_TITLE]")
+GUICtrlSetData($AboutTab, $TITLE_MSGS[$CurrentLang][$ABOUT_TAB_TITLE])
+GUICtrlSetData($SettingTab, $TITLE_MSGS[$CurrentLang][$SETTING_TAB_TITLE])
+GUICtrlCreateTabItem("")
+_GUICtrlTab_SetCurFocus($tab,-1)
+GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,2)&GUICtrlRead ($tab, 1))
+$devinfolabel = GUICtrlCreateLabel("[DEVINFOTEXT]",20,59,90,15,-1,-1)
+GUICtrlSetBkColor(-1,"-2")
+GUICtrlSetData($devinfolabel, $Texts[$CurrentLang][$DevInfo])
+$devnamelabel = GUICtrlCreateLabel("[DEVELOPER]",110,78,100,15,-1,-1)
+GUICtrlSetFont(-1,9,700,0,"MS Sans Serif")
+GUICtrlSetBkColor(-1,"-2")
+GUICtrlSetData($devnamelabel, $Texts[$CurrentLang][$DevName])
+$AboutGroup = GUICtrlCreateGroup("[ABOUT_GROUP_TITLE]",10,30,330,313,-1,-1)
+GUICtrlSetBkColor(-1,"0xF0F0F0")
+GUICtrlSetData($AboutGroup, $TITLE_MSGS[$CurrentLang][$ABOUT_GROUP_TITLE])
+$versioninfolabel = GUICtrlCreateLabel("[VERSIONTEXT]",20,78,90,15,-1,-1)
+GUICtrlSetBkColor(-1,"-2")
+GUICtrlSetData($versioninfolabel, $Texts[$CurrentLang][$VersionText])
+$versionlabel = GUICtrlCreateLabel("[VERSION]",110,59,100,15,-1,-1)
+GUICtrlSetFont(-1,9,700,0,"MS Sans Serif")
+GUICtrlSetBkColor(-1,"-2")
+GUICtrlSetData($versionlabel, $Version)
+GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,1)&GUICtrlRead ($tab, 1))
+$checkupdatebtnGUI = GUICtrlCreateButton("[CHECK_FOR_UPDATE]",10,313,330,30,-1,-1)
+GUICtrlSetOnEvent(-1,"CheckUpdateMirror")
+GUICtrlSetData($checkupdatebtnGUI, $Texts[$CurrentLang][$CheckForUpdateBtn])
+Func CheckUpdateMirror()
+	_CheckUpdate(1)
+EndFunc
+GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,2)&GUICtrlRead ($tab, 1))
+$visitgithub_btnGUI = GUICtrlCreateButton("[VISIT_GITHUB]",20,300,150,30,-1,-1)
+GUICtrlSetOnEvent(-1,"OpenGithub")
+GUICtrlSetData($visitgithub_btnGUI, $Texts[$CurrentLang][$VisitGitHub_btn])
+$visitwebsitebtnGUI = GUICtrlCreateButton("[VISIT_DEV_WEBSITE]",180,300,150,30,-1,-1)
+GUICtrlSetOnEvent(-1,"OpenWebsite")
+GUICtrlSetData($visitwebsitebtnGUI, $Texts[$CurrentLang][$VisitWebsitebtn])
+$DevIco = GUICtrlCreatePic("",270,50,50,50,-1,-1)
+_Resource_SetToCtrlID($DevIco, "dev")
+GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,0)&GUICtrlRead ($tab, 1))
+$StartbntGUI = GUICtrlCreateButton("[START_BOT_btn]",110,130,102,88,-1,-1)
+GUICtrlSetOnEvent(-1,"GetData")
+_GUICtrlTab_SetCurFocus($tab,0)
+
+
+
+#cs
+[tab]
+type=tab
+x=0
+y=0
+width=352
+height=352
+text=
+tooltip=
+pages=3
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=tab
+func=
+bgimage=
+handle=402
+code=GUICtrlSetData($AboutTab, $TITLE_MSGS[$CurrentLang][$ABOUT_TAB_TITLE])[BREAK]GUICtrlSetData($SettingTab, $TITLE_MSGS[$CurrentLang][$SETTING_TAB_TITLE])
+tabpage=-1
+iconindex=
+resize=
+textmode=text
+order=0
+[0x00060F84]
+order=0
+[TABPAGE3]
+page=3
+text=[ABOUT_TAB_TITLE]
+textmode=text
+handle=AboutTab
+[TABPAGE2]
+page=2
+text=[SETTING_TAB_TITLE]
+textmode=text
+handle=SettingTab
+[TABPAGE1]
+page=1
+text=Bot
+textmode=text
+handle=BotTab
+[gui]
+Handle_deklaration=default
+Handle_deklaration_const=false
+title=FoE Bot By LightDestory
+breite=350
+hoehe=350
+style=-1
+exstyle=-1
+bgcolour=0xF0F0F0
+bgimage=none
+handle=FoE_GUI
+parent=
+code=
+xpos=-1
+ypos=-1
+center_gui=true
+title_textmode=normal
+isf_include_once=false
+only_controls_in_isf=false
+const_modus=default
+gui_event_close=_Exit
+gui_event_minimize=
+gui_event_restore=
+gui_event_maximize=
+gui_event_mousemove=
+gui_event_primarydown=
+gui_event_primaryup=
+gui_event_secoundarydown=
+gui_event_secoundaryup=
+gui_event_resized=
+gui_event_dropped=
+[0x00090F7A]
+handle=403
+locked=0
+resize=
+code=GUICtrlSetData($devinfolabel, $Texts[$CurrentLang][$DevInfo])
+type=label
+x=20
+y=59
+width=90
+height=15
+text=[DEVINFOTEXT]
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=-2
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=devinfolabel
+func=
+bgimage=
+order=3
+tabpage=2
+iconindex=
+textmode=text
+[0x0033064C]
+handle=404
+locked=0
+resize=
+code=GUICtrlSetData($devnamelabel, $Texts[$CurrentLang][$DevName])
+type=label
+x=110
+y=78
+width=100
+height=15
+text=[DEVELOPER]
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=-2
+font=MS Sans Serif
+fontsize=9
+fontstyle=700
+fontattribute=0
+id=devnamelabel
+func=
+bgimage=
+order=4
+tabpage=2
+iconindex=
+textmode=text
+[0x00060F64]
+handle=405
+locked=0
+resize=
+code=GUICtrlSetData($AboutGroup, $TITLE_MSGS[$CurrentLang][$ABOUT_GROUP_TITLE])
+type=group
+x=10
+y=30
+width=330
+height=313
+text=[ABOUT_GROUP_TITLE]
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=0xF0F0F0
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=AboutGroup
+func=
+bgimage=
+order=5
+tabpage=2
+iconindex=
+textmode=text
+[0x00080F58]
+handle=406
+locked=0
+resize=
+code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$VersionText])
+type=label
+x=20
+y=78
+width=90
+height=15
+text=[VERSIONTEXT]
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=-2
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=versioninfolabel
+func=
+bgimage=
+order=6
+tabpage=2
+iconindex=
+textmode=text
+[0x00060F5C]
+handle=407
+locked=0
+resize=
+code=GUICtrlSetData($versionlabel, $Version)
+type=label
+x=110
+y=59
+width=100
+height=15
+text=[VERSION]
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=-2
+font=MS Sans Serif
+fontsize=9
+fontstyle=700
+fontattribute=0
+id=versionlabel
+func=
+bgimage=
+order=7
+tabpage=2
+iconindex=
+textmode=text
+[0x00060F66]
+handle=408
+locked=0
+resize=
+code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$CheckForUpdateBtn])[BREAK]Func CheckUpdateMirror()[BREAK]	_CheckUpdate(1)[BREAK]EndFunc
+type=button
+x=10
+y=313
+width=330
+height=30
+text=[CHECK_FOR_UPDATE]
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=checkupdatebtnGUI
+func=CheckUpdateMirror
+bgimage=
+order=8
+tabpage=1
+iconindex=
+textmode=text
+[0x00060F74]
+handle=409
+locked=0
+resize=
+code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$VisitGitHub_btn])
+type=button
+x=20
+y=300
+width=150
+height=30
+text=[VISIT_GITHUB]
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=visitgithub_btnGUI
+func=OpenGithub
+bgimage=
+order=9
+tabpage=2
+iconindex=
+textmode=text
+[0x00060F7E]
+handle=410
+locked=0
+resize=
+code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$VisitWebsitebtn])
+type=button
+x=180
+y=300
+width=150
+height=30
+text=[VISIT_DEV_WEBSITE]
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=visitwebsitebtnGUI
+func=OpenWebsite
+bgimage=
+order=10
+tabpage=2
+iconindex=
+textmode=text
+[0x00060FB6]
+handle=411
+locked=0
+resize=
+code=
+type=button
+x=110
+y=130
+width=102
+height=88
+text=[START_BOT_btn]
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=StartbntGUI
+func=GetData
+bgimage=
+order=11
+tabpage=0
+iconindex=
+textmode=text
+[0x002306CA]
+handle=420
+locked=0
+resize=
+code=_Resource_SetToCtrlID($DevIco, "dev")
+type=image
+x=270
+y=50
+width=50
+height=50
+tooltip=
+text=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=DevIco
+func=
+bgimage=
+order=11
+tabpage=2
+iconindex=
+textmode=text
+#ce
