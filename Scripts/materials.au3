@@ -1,34 +1,36 @@
 ;OLD CODE, NEED TO BE REVISIONED
-#include <Constants.au3>
-#include <AutoItConstants.au3>
-#include <Misc.au3>
-HotKeySet("{ESC}", "Terminate")
+HotKeySet("{F1}", "Terminate")
 Global $dll = DllOpen("user32.dll")
 Global $press = False
 Func GetData()
-	MsgBox($MB_TOPMOST+$MB_ICONWARNING,"WARNING","TO TERMINATE THE BOT PRESS 'ESC'")
-   Global $b = InputBox("Getting Data", "Please enter the number of farming build")
-   If @error = 1 Then
-		MsgBox($MB_SYSTEMMODAL, "Error", "You pressed 'Cancel'")
+	MsgBox($MB_TOPMOST+$MB_ICONWARNING,$TITLE_MSGS[$CurrentLang][$WARNINGTITLE],"TO TERMINATE THE BOT PRESS 'ESC'")
+	Global $GettingDataInput = _InputBox($TITLE_MSGS[$CurrentLang][$MATERIALS_GETDATATITLE], "Please enter the number of farming build" & @LF & "[Only Numbers are allowed]", "", "", 0, 1, "", 300, 200, -1, -1, $WS_SIZEBOX, $WS_EX_TOPMOST)
+	If(@error Or $GettingDataInput == "" Or $GettingDataInput == 0) Then
+		If @error Then
+			MsgBox($MB_TOPMOST+$MB_ICONERROR, $TITLE_MSGS[$CurrentLang][$ERRORTITLE], "You pressed 'Cancel'")
+		ElseIf($GettingDataInput == "" Or $GettingDataInput == 0) Then
+			MsgBox($MB_TOPMOST+$MB_ICONERROR, $TITLE_MSGS[$CurrentLang][$ERRORTITLE], "Invalid Input'")
+			Terminate()
+		EndIf
 		Terminate()
-   EndIf
-   MsgBox ($MB_TOPMOST, "INFO", "You have entered " & $b & " builds", 3)
-   Global $arrX[$b]
-   Global $arrY[$b]
-   Global $farmitem[1][2]
-   GetCoordinates()
-   TestCoordinates()
+	EndIf
+	MsgBox ($MB_TOPMOST+$MB_ICONINFORMATION, $TITLE_MSGS[$CurrentLang][$INFOTITLE], "You have entered " & $GettingDataInput & " builds", 3)
+	Global $arrX[$GettingDataInput]
+	Global $arrY[$GettingDataInput]
+	Global $farmitem[1][2]
+	GetCoordinates()
+	TestCoordinates()
 	Farm()
 EndFunc
 Func TestCoordinates()
-   For $iCount = 0 To ($b-1)
+   For $iCount = 0 To ($GettingDataInput-1)
 	  MsgBox($MB_TOPMOST,"Coordinates", "Coordinate Number: " & ($iCount+1) &@CRLF &"X:" & $arrX[$iCount] & @CRLF & "Y:" & $arrY[$iCount])
    Next
    MsgBox($MB_TOPMOST,"Coordinates", "Coordinate Farm Item " &@CRLF &"X:" & $farmitem[0][0] & @CRLF & "Y:" & $farmitem[0][1])
 EndFunc
 Func GetCoordinates()
-   For $iCount = 0 To ($b-1)
-	  if($iCount < $b) Then
+   For $iCount = 0 To ($GettingDataInput-1)
+	  if($iCount < $GettingDataInput) Then
 		 $press = False
 	  EndIf
 		 MsgBox($MB_TOPMOST,"Getting Data", "Please Click OK and click on Build Number: " & ($iCount+1))
@@ -57,15 +59,15 @@ Func GetCoordinates()
 		 WEnd
 EndFunc
 Func Terminate()
-		MsgBox($MB_TOPMOST, "EXIT", "STOPPING...", 1)
-  Exit 0
+	MsgBox($MB_TOPMOST, "EXIT", "STOPPING...", 1)
+	Exit 0
 EndFunc
 Func Farm()
    Set()
 EndFunc
 Func Set()
    Sleep(1500)
-   for $c = 0 to ($b-1)
+   for $c = 0 to ($GettingDataInput-1)
 	  Sleep(3000)
 	  MouseClick($MOUSE_CLICK_LEFT, $arrX[$c], $arrY[$c])
 	  sleep(3000)
@@ -75,7 +77,7 @@ Func Set()
    PickUP()
 EndFunc
 Func PickUP()
-   for $c = 0 to ($b-1)
+   for $c = 0 to ($GettingDataInput-1)
 	  MouseClick($MOUSE_CLICK_LEFT, $arrX[$c], $arrY[$c])
 	  sleep(2500)
    Next

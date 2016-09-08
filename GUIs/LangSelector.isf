@@ -5,15 +5,15 @@
 #Include <GuiButton.au3>
 #include <ComboConstants.au3>
 
-$LangSelector = GUICreate("Select a Language",310,86,-1,-1,-1,-1)
+$LangSelector = GUICreate("Select a Language",292,81,-1,-1,-1,-1)
 GUISetOnEvent($GUI_EVENT_CLOSE, "_Exit", $LangSelector)
-$langinfo = GUICtrlCreateLabel("Select Language:",15,25,89,15,-1,-1)
+$langinfo = GUICtrlCreateLabel("Select Language:",10,20,85,15,-1,-1)
 GUICtrlSetBkColor(-1,"-2")
-$LangSelList = GUICtrlCreateCombo("",103,20,128,21,$CBS_DROPDOWNLIST,-1)
+$LangSelList = GUICtrlCreateCombo("",100,15,120,20,$CBS_DROPDOWNLIST,-1)
 GUICtrlSetData(-1,"English|Italian")
 GUICtrlSetOnEvent(-1,"EnableSetLanguage")
-$langflag = GUICtrlCreatePic("",242,19,50,50,-1,-1)
-$SetButton = GUICtrlCreateButton("Select",15,46,216,30,-1,-1)
+$langflag = GUICtrlCreatePic("",230,10,50,50,-1,-1)
+$SetButton = GUICtrlCreateButton("Select",40,40,150,29,-1,-1)
 GUICtrlSetOnEvent(-1,"SetLanguage")
 GUICtrlSetState(-1,BitOr($GUI_SHOW,$GUI_DISABLE))
 Func SetLangFlag()
@@ -45,8 +45,8 @@ EndFunc
 Handle_deklaration=default
 Handle_deklaration_const=false
 title=Select a Language
-breite=310
-hoehe=86
+breite=292
+hoehe=81
 style=-1
 exstyle=-1
 bgcolour=0xF0F0F0
@@ -72,15 +72,15 @@ gui_event_secoundarydown=
 gui_event_secoundaryup=
 gui_event_resized=
 gui_event_dropped=
-[0x00061520]
+[0x00042264]
 handle=402
 locked=0
 resize=
 code=
 type=label
-x=15
-y=25
-width=89
+x=10
+y=20
+width=85
 height=15
 text=Select Language:
 tooltip=
@@ -100,16 +100,16 @@ order=0
 tabpage=-1
 iconindex=
 textmode=text
-[0x00051524]
+[0x00042256]
 handle=403
-locked=1
+locked=0
 resize=
 code=Func SetLangFlag()[BREAK]	Switch(GUICtrlRead($LangSelList))[BREAK]		Case "English"[BREAK]			_Resource_SetToCtrlID($langflag, "en")[BREAK]		Case "Italian"[BREAK]			_Resource_SetToCtrlID($langflag, "it")[BREAK]	EndSwitch[BREAK]EndFunc[BREAK]Func EnableSetLanguage()[BREAK]	GUICtrlSetState($SetButton, $GUI_ENABLE)[BREAK]	SetLangFlag()[BREAK]EndFunc[BREAK]Func SetLanguage()[BREAK]	Switch(GUICtrlRead($LangSelList))[BREAK]		Case "English"[BREAK]			$CurrentLang = $LANG_EN[BREAK]		Case "Italian"[BREAK]			$CurrentLang = $LANG_IT[BREAK]	EndSwitch[BREAK]	GUIDelete($LangSelector)[BREAK]EndFunc
 type=button
-x=15
-y=46
-width=216
-height=30
+x=40
+y=40
+width=150
+height=29
 text=Select
 tooltip=
 state=$GUI_SHOW+$GUI_DISABLE
@@ -128,16 +128,16 @@ order=3
 tabpage=-1
 iconindex=
 textmode=text
-[0x00051528]
+[0x00072360]
 handle=404
 locked=0
 resize=
 code=
 type=combo
-x=103
-y=20
-width=128
-height=21
+x=100
+y=15
+width=120
+height=20
 text=English|Italian
 tooltip=
 state=$GUI_SHOW+$GUI_ENABLE
@@ -156,14 +156,14 @@ order=1
 tabpage=-1
 iconindex=
 textmode=text
-[0x001004B2]
-handle=413
+[0x00091EF4]
+handle=405
 locked=0
 resize=
 code=
 type=image
-x=242
-y=19
+x=230
+y=10
 width=50
 height=50
 tooltip=

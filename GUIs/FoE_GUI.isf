@@ -35,7 +35,7 @@ GUICtrlSetFont(-1,9,700,0,"MS Sans Serif")
 GUICtrlSetBkColor(-1,"-2")
 GUICtrlSetData($versionlabel, $Version)
 GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,1)&GUICtrlRead ($tab, 1))
-$checkupdatebtnGUI = GUICtrlCreateButton("[CHECK_FOR_UPDATE]",10,313,330,30,-1,-1)
+$checkupdatebtnGUI = GUICtrlCreateButton("[CHECK_FOR_UPDATE]",10,323,330,30,-1,-1)
 GUICtrlSetOnEvent(-1,"CheckUpdateMirror")
 GUICtrlSetData($checkupdatebtnGUI, $Texts[$CurrentLang][$CheckForUpdateBtn])
 Func CheckUpdateMirror()
@@ -43,15 +43,15 @@ Func CheckUpdateMirror()
 EndFunc
 GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,2)&GUICtrlRead ($tab, 1))
 $visitgithub_btnGUI = GUICtrlCreateButton("[VISIT_GITHUB]",20,300,150,30,-1,-1)
-GUICtrlSetOnEvent(-1,"OpenGithub")
+GUICtrlSetOnEvent(-1,"_OpenGithub")
 GUICtrlSetData($visitgithub_btnGUI, $Texts[$CurrentLang][$VisitGitHub_btn])
 $visitwebsitebtnGUI = GUICtrlCreateButton("[VISIT_DEV_WEBSITE]",180,300,150,30,-1,-1)
-GUICtrlSetOnEvent(-1,"OpenWebsite")
+GUICtrlSetOnEvent(-1,"_OpenWebsite")
 GUICtrlSetData($visitwebsitebtnGUI, $Texts[$CurrentLang][$VisitWebsitebtn])
 $DevIco = GUICtrlCreatePic("",270,50,50,50,-1,-1)
 _Resource_SetToCtrlID($DevIco, "dev")
 GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,0)&GUICtrlRead ($tab, 1))
-$StartbntGUI = GUICtrlCreateButton("[START_BOT_btn]",110,130,102,88,-1,-1)
+$StartbntGUI = GUICtrlCreateButton("[START_BOT_btn]",110,170,102,88,-1,-1)
 GUICtrlSetOnEvent(-1,"GetData")
 _GUICtrlTab_SetCurFocus($tab,0)
 
@@ -86,7 +86,7 @@ iconindex=
 resize=
 textmode=text
 order=0
-[0x00060F84]
+[0x00141D12]
 order=0
 [TABPAGE3]
 page=3
@@ -134,7 +134,7 @@ gui_event_secoundarydown=
 gui_event_secoundaryup=
 gui_event_resized=
 gui_event_dropped=
-[0x00090F7A]
+[0x00741ADC]
 handle=403
 locked=0
 resize=
@@ -162,7 +162,7 @@ order=3
 tabpage=2
 iconindex=
 textmode=text
-[0x0033064C]
+[0x00530970]
 handle=404
 locked=0
 resize=
@@ -190,7 +190,7 @@ order=4
 tabpage=2
 iconindex=
 textmode=text
-[0x00060F64]
+[0x001A1B30]
 handle=405
 locked=0
 resize=
@@ -218,7 +218,7 @@ order=5
 tabpage=2
 iconindex=
 textmode=text
-[0x00080F58]
+[0x000D1C18]
 handle=406
 locked=0
 resize=
@@ -246,7 +246,7 @@ order=6
 tabpage=2
 iconindex=
 textmode=text
-[0x00060F5C]
+[0x000D1C14]
 handle=407
 locked=0
 resize=
@@ -274,14 +274,14 @@ order=7
 tabpage=2
 iconindex=
 textmode=text
-[0x00060F66]
+[0x001D1D10]
 handle=408
 locked=0
 resize=
 code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$CheckForUpdateBtn])[BREAK]Func CheckUpdateMirror()[BREAK]	_CheckUpdate(1)[BREAK]EndFunc
 type=button
 x=10
-y=313
+y=323
 width=330
 height=30
 text=[CHECK_FOR_UPDATE]
@@ -302,7 +302,7 @@ order=8
 tabpage=1
 iconindex=
 textmode=text
-[0x00060F74]
+[0x00131C38]
 handle=409
 locked=0
 resize=
@@ -324,13 +324,13 @@ fontsize=8
 fontstyle=400
 fontattribute=0
 id=visitgithub_btnGUI
-func=OpenGithub
+func=_OpenGithub
 bgimage=
 order=9
 tabpage=2
 iconindex=
 textmode=text
-[0x00060F7E]
+[0x00281AF8]
 handle=410
 locked=0
 resize=
@@ -352,20 +352,20 @@ fontsize=8
 fontstyle=400
 fontattribute=0
 id=visitwebsitebtnGUI
-func=OpenWebsite
+func=_OpenWebsite
 bgimage=
 order=10
 tabpage=2
 iconindex=
 textmode=text
-[0x00060FB6]
+[0x00042238]
 handle=411
 locked=0
 resize=
 code=
 type=button
 x=110
-y=130
+y=170
 width=102
 height=88
 text=[START_BOT_btn]
@@ -386,8 +386,8 @@ order=11
 tabpage=0
 iconindex=
 textmode=text
-[0x002306CA]
-handle=420
+[0x00042240]
+handle=412
 locked=0
 resize=
 code=_Resource_SetToCtrlID($DevIco, "dev")
