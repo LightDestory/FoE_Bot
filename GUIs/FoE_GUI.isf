@@ -17,34 +17,33 @@ GUICtrlSetData($SettingTab, $TITLE_MSGS[$CurrentLang][$SETTING_TAB_TITLE])
 GUICtrlCreateTabItem("")
 _GUICtrlTab_SetCurFocus($tab,-1)
 GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,2)&GUICtrlRead ($tab, 1))
-$devinfolabel = GUICtrlCreateLabel("[DEVINFOTEXT]",20,59,90,15,-1,-1)
+$devinfolabel = GUICtrlCreateLabel("[DEVINFOTEXT]",20,60,90,15,-1,-1)
 GUICtrlSetBkColor(-1,"-2")
 GUICtrlSetData($devinfolabel, $Texts[$CurrentLang][$DevInfo])
-$devnamelabel = GUICtrlCreateLabel("[DEVELOPER]",110,78,100,15,-1,-1)
+$devnamelabel = GUICtrlCreateLabel("[DEVELOPER]",110,60,100,15,-1,-1)
 GUICtrlSetFont(-1,9,700,0,"MS Sans Serif")
 GUICtrlSetBkColor(-1,"-2")
 GUICtrlSetData($devnamelabel, $Texts[$CurrentLang][$DevName])
 $AboutGroup = GUICtrlCreateGroup("[ABOUT_GROUP_TITLE]",10,30,330,313,-1,-1)
 GUICtrlSetBkColor(-1,"0xF0F0F0")
 GUICtrlSetData($AboutGroup, $TITLE_MSGS[$CurrentLang][$ABOUT_GROUP_TITLE])
-$versioninfolabel = GUICtrlCreateLabel("[VERSIONTEXT]",20,78,90,15,-1,-1)
+$versioninfolabel = GUICtrlCreateLabel("[VERSIONTEXT]",20,80,90,15,-1,-1)
 GUICtrlSetBkColor(-1,"-2")
 GUICtrlSetData($versioninfolabel, $Texts[$CurrentLang][$VersionText])
-$versionlabel = GUICtrlCreateLabel("[VERSION]",110,59,100,15,-1,-1)
+$versionlabel = GUICtrlCreateLabel("[VERSION]",110,80,100,15,-1,-1)
 GUICtrlSetFont(-1,9,700,0,"MS Sans Serif")
 GUICtrlSetBkColor(-1,"-2")
 GUICtrlSetData($versionlabel, $Version)
 GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,1)&GUICtrlRead ($tab, 1))
-$checkupdatebtnGUI = GUICtrlCreateButton("[CHECK_FOR_UPDATE]",10,323,330,30,-1,-1)
+$checkupdatebtnGUI = GUICtrlCreateButton("[CHECK_FOR_UPDATE]",10,310,330,30,-1,-1)
 GUICtrlSetOnEvent(-1,"CheckUpdateMirror")
 GUICtrlSetData($checkupdatebtnGUI, $Texts[$CurrentLang][$CheckForUpdateBtn])
 Func CheckUpdateMirror()
 	_CheckUpdate(1)
 EndFunc
 GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,2)&GUICtrlRead ($tab, 1))
-$visitgithub_btnGUI = GUICtrlCreateButton("[VISIT_GITHUB]",20,300,150,30,-1,-1)
-GUICtrlSetOnEvent(-1,"_OpenGithub")
-GUICtrlSetData($visitgithub_btnGUI, $Texts[$CurrentLang][$VisitGitHub_btn])
+$visitgithubbtnGUI = GUICtrlCreateButton("[VISIT_GITHUB]",20,300,150,30,-1,-1)
+GUICtrlSetData($visitgithubbtnGUI, $Texts[$CurrentLang][$VisitGitHub_btn])
 $visitwebsitebtnGUI = GUICtrlCreateButton("[VISIT_DEV_WEBSITE]",180,300,150,30,-1,-1)
 GUICtrlSetOnEvent(-1,"_OpenWebsite")
 GUICtrlSetData($visitwebsitebtnGUI, $Texts[$CurrentLang][$VisitWebsitebtn])
@@ -53,6 +52,14 @@ _Resource_SetToCtrlID($DevIco, "dev")
 GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,0)&GUICtrlRead ($tab, 1))
 $StartbntGUI = GUICtrlCreateButton("[START_BOT_btn]",110,170,102,88,-1,-1)
 GUICtrlSetOnEvent(-1,"GetData")
+GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,2)&GUICtrlRead ($tab, 1))
+$buildtypeinfolabel = GUICtrlCreateLabel("[BUILD_TYPE_T]",20,100,90,15,-1,-1)
+GUICtrlSetBkColor(-1,"-2")
+GUICtrlSetData($buildtypeinfolabel, $Texts[$CurrentLang][$BuildTypeText])
+$buildtypelabel = GUICtrlCreateLabel("[BULD_TYPE]",110,100,100,15,-1,-1)
+GUICtrlSetFont(-1,9,700,0,"MS Sans Serif")
+GUICtrlSetBkColor(-1,"-2")
+GUICtrlSetData($buildtypelabel, $BuildType)
 _GUICtrlTab_SetCurFocus($tab,0)
 
 
@@ -86,8 +93,13 @@ iconindex=
 resize=
 textmode=text
 order=0
-[0x00141D12]
+locked=1
+[0x000F0A32]
 order=0
+handle=402
+locked=0
+resize=
+code=
 [TABPAGE3]
 page=3
 text=[ABOUT_TAB_TITLE]
@@ -134,14 +146,14 @@ gui_event_secoundarydown=
 gui_event_secoundaryup=
 gui_event_resized=
 gui_event_dropped=
-[0x00741ADC]
+[0x00180988]
 handle=403
-locked=0
+locked=1
 resize=
 code=GUICtrlSetData($devinfolabel, $Texts[$CurrentLang][$DevInfo])
 type=label
 x=20
-y=59
+y=60
 width=90
 height=15
 text=[DEVINFOTEXT]
@@ -162,14 +174,14 @@ order=3
 tabpage=2
 iconindex=
 textmode=text
-[0x00530970]
+[0x00061B62]
 handle=404
-locked=0
+locked=1
 resize=
 code=GUICtrlSetData($devnamelabel, $Texts[$CurrentLang][$DevName])
 type=label
 x=110
-y=78
+y=60
 width=100
 height=15
 text=[DEVELOPER]
@@ -190,9 +202,9 @@ order=4
 tabpage=2
 iconindex=
 textmode=text
-[0x001A1B30]
+[0x00161B46]
 handle=405
-locked=0
+locked=1
 resize=
 code=GUICtrlSetData($AboutGroup, $TITLE_MSGS[$CurrentLang][$ABOUT_GROUP_TITLE])
 type=group
@@ -218,14 +230,14 @@ order=5
 tabpage=2
 iconindex=
 textmode=text
-[0x000D1C18]
+[0x00051EFA]
 handle=406
-locked=0
+locked=1
 resize=
 code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$VersionText])
 type=label
 x=20
-y=78
+y=80
 width=90
 height=15
 text=[VERSIONTEXT]
@@ -246,14 +258,14 @@ order=6
 tabpage=2
 iconindex=
 textmode=text
-[0x000D1C14]
+[0x00081EE8]
 handle=407
-locked=0
+locked=1
 resize=
 code=GUICtrlSetData($versionlabel, $Version)
 type=label
 x=110
-y=59
+y=80
 width=100
 height=15
 text=[VERSION]
@@ -274,14 +286,14 @@ order=7
 tabpage=2
 iconindex=
 textmode=text
-[0x001D1D10]
+[0x00081B60]
 handle=408
-locked=0
+locked=1
 resize=
 code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$CheckForUpdateBtn])[BREAK]Func CheckUpdateMirror()[BREAK]	_CheckUpdate(1)[BREAK]EndFunc
 type=button
 x=10
-y=323
+y=310
 width=330
 height=30
 text=[CHECK_FOR_UPDATE]
@@ -302,9 +314,9 @@ order=8
 tabpage=1
 iconindex=
 textmode=text
-[0x00131C38]
+[0x000C1B34]
 handle=409
-locked=0
+locked=1
 resize=
 code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$VisitGitHub_btn])
 type=button
@@ -314,7 +326,7 @@ width=150
 height=30
 text=[VISIT_GITHUB]
 tooltip=
-state=$GUI_SHOW+$GUI_ENABLE
+state=
 style=
 exstyle=
 textcolour=0x000000
@@ -323,16 +335,16 @@ font=MS Sans Serif
 fontsize=8
 fontstyle=400
 fontattribute=0
-id=visitgithub_btnGUI
-func=_OpenGithub
+id=visitgithubbtnGUI
+func=
 bgimage=
 order=9
 tabpage=2
 iconindex=
 textmode=text
-[0x00281AF8]
+[0x003B0978]
 handle=410
-locked=0
+locked=1
 resize=
 code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$VisitWebsitebtn])
 type=button
@@ -358,7 +370,7 @@ order=10
 tabpage=2
 iconindex=
 textmode=text
-[0x00042238]
+[0x001A0148]
 handle=411
 locked=0
 resize=
@@ -386,9 +398,9 @@ order=11
 tabpage=0
 iconindex=
 textmode=text
-[0x00042240]
+[0x000F09EE]
 handle=412
-locked=0
+locked=1
 resize=
 code=_Resource_SetToCtrlID($DevIco, "dev")
 type=image
@@ -414,4 +426,60 @@ order=11
 tabpage=2
 iconindex=
 textmode=text
+[0x0040228E]
+handle=421
+locked=1
+resize=
+code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$BuildTypeText])
+type=label
+x=20
+y=100
+width=90
+height=15
+text=[BUILD_TYPE_T]
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=-2
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=buildtypeinfolabel
+func=
+bgimage=
+order=12
+tabpage=2
+iconindex=
+textmode=text
+[0x0027226C]
+handle=422
+locked=1
+resize=
+code=GUICtrlSetData($control_handle, $BuildType)
+type=label
+x=110
+y=100
+width=100
+height=15
+text=[BULD_TYPE]
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=-2
+font=MS Sans Serif
+fontsize=9
+fontstyle=700
+fontattribute=0
+id=buildtypelabel
+func=
+bgimage=
+tabpage=2
+iconindex=
+textmode=text
+order=13
 #ce

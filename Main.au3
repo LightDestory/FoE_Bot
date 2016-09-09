@@ -28,13 +28,16 @@ Global $WebsiteURL = "http://www.lightdestoryweb.altervista.org/"
 #include "Utils\Common.au3"
 #include "Scripts\materials.au3"
 #include "GUIs\LangSelector.isf"
-#include "GUIs\FoE_GUI.isf"
 #EndRegion
 #Region Start
 ;Start of the program
 Opt("GUIOnEventMode", 1)
 GUISetState(@SW_SHOW, $LangSelector)
 WinWaitClose ("Select a Language")
+#Region INCLUDE OF GUIs
+;We have to include GUIs after the Language Selection otherwise the GUIs language will be always English
+#include "GUIs\FoE_GUI.isf"
+#EndRegion
 MsgBox($MB_TOPMOST+$MB_ICONINFORMATION, $TITLE_MSGS[$CurrentLang][$STARTUPTITLE], $DIALOG_MSGS[$CurrentLang][$STARTUPDIALOG])
 _CheckUpdate(0)
 GUISetState(@SW_SHOW, $FoE_GUI)

@@ -72,9 +72,9 @@ gui_event_secoundarydown=
 gui_event_secoundaryup=
 gui_event_resized=
 gui_event_dropped=
-[0x00042264]
+[0x00012248]
 handle=402
-locked=0
+locked=1
 resize=
 code=
 type=label
@@ -100,9 +100,9 @@ order=0
 tabpage=-1
 iconindex=
 textmode=text
-[0x00042256]
+[0x0001224C]
 handle=403
-locked=0
+locked=1
 resize=
 code=Func SetLangFlag()[BREAK]	Switch(GUICtrlRead($LangSelList))[BREAK]		Case "English"[BREAK]			_Resource_SetToCtrlID($langflag, "en")[BREAK]		Case "Italian"[BREAK]			_Resource_SetToCtrlID($langflag, "it")[BREAK]	EndSwitch[BREAK]EndFunc[BREAK]Func EnableSetLanguage()[BREAK]	GUICtrlSetState($SetButton, $GUI_ENABLE)[BREAK]	SetLangFlag()[BREAK]EndFunc[BREAK]Func SetLanguage()[BREAK]	Switch(GUICtrlRead($LangSelList))[BREAK]		Case "English"[BREAK]			$CurrentLang = $LANG_EN[BREAK]		Case "Italian"[BREAK]			$CurrentLang = $LANG_IT[BREAK]	EndSwitch[BREAK]	GUIDelete($LangSelector)[BREAK]EndFunc
 type=button
@@ -128,9 +128,9 @@ order=3
 tabpage=-1
 iconindex=
 textmode=text
-[0x00072360]
+[0x00012250]
 handle=404
-locked=0
+locked=1
 resize=
 code=
 type=combo
@@ -156,9 +156,9 @@ order=1
 tabpage=-1
 iconindex=
 textmode=text
-[0x00091EF4]
+[0x00012258]
 handle=405
-locked=0
+locked=1
 resize=
 code=
 type=image

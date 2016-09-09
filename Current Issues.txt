@@ -1,0 +1,1 @@
+- When you Terminate via Hotkey the BoT will be closed. It should return to the GUI controls.

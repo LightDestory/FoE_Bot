@@ -29,6 +29,10 @@ Const $STARTUPDIALOG = 0
 Const $UPDATEDIALOG = 1
 Const $NOUPDATEDIALOG = 2
 Const $NONETDIALOG = 3
+Const $CANCELDIALOG = 4
+Const $INVALIDINPUTDIALOG = 5
+Const $MATERIALS_GETDATADIALOG = 6
+Const $CONFIRMINPUTDIALOG = 7
 ;Texts
 Const $FarmButton = 0
 Const $DevInfo = 1
@@ -37,6 +41,7 @@ Const $VersionText = 3
 Const $CheckForUpdateBtn = 4
 Const $VisitGitHub_btn = 5
 Const $VisitWebsitebtn = 6
+Const $BuildTypeText = 7
 #EndRegion
 #Region Language Translation
 ;--------------Text Translated;--------------
@@ -57,6 +62,10 @@ $DIALOG_MSGS[$LANG_EN][$STARTUPDIALOG] = "Bot for FORGE OF EMPIRE (FoE)"&@CRLF &
 $DIALOG_MSGS[$LANG_EN][$UPDATEDIALOG] = "New Update avaible!" & @CRLF & "Visit project's github repo now!"
 $DIALOG_MSGS[$LANG_EN][$NOUPDATEDIALOG] = "You are using the latest version." & @CRLF &"Enjoy :')!"
 $DIALOG_MSGS[$LANG_EN][$NONETDIALOG] = "No Internet Connection avaible."
+$DIALOG_MSGS[$LANG_EN][$CANCELDIALOG] = "You pressed 'Cancel'"
+$DIALOG_MSGS[$LANG_EN][$INVALIDINPUTDIALOG] = "You entered an invalid input."
+$DIALOG_MSGS[$LANG_EN][$MATERIALS_GETDATADIALOG] = "Enter the number of" & @CRLF & "buildings that you want to farm:"
+$DIALOG_MSGS[$LANG_EN][$CONFIRMINPUTDIALOG] = "Do you want to farm this quantity of building?"
 ;Texts
 $Texts[$LANG_EN][$FarmButton] = "Farm of Materials"
 $Texts[$LANG_EN][$DevInfo] = "Developer:"
@@ -65,6 +74,7 @@ $Texts[$LANG_EN][$VersionText] = "Version:"
 $Texts[$LANG_EN][$CheckForUpdateBtn] = "Check for Updates"
 $Texts[$LANG_EN][$VisitGitHub_btn] = "Visit Github"
 $Texts[$LANG_EN][$VisitWebsitebtn] = "Visit Dev Website"
+$Texts[$LANG_EN][$BuildTypeText] = "Build Type:"
 #EndRegion
 #Region ITALIAN
 ;***IT***
@@ -77,12 +87,16 @@ $TITLE_MSGS[$LANG_IT][$SETTING_TAB_TITLE] = "Impostazioni"
 $TITLE_MSGS[$LANG_IT][$WARNINGTITLE] = "Avviso"
 $TITLE_MSGS[$LANG_IT][$ERRORTITLE] = "Errore"
 $TITLE_MSGS[$LANG_IT][$INFOTITLE] = "Info"
-$TITLE_MSGS[$LANG_IT][$MATERIALS_GETDATATITLE] = "Ottenendo i dati"
+$TITLE_MSGS[$LANG_IT][$MATERIALS_GETDATATITLE] = "Acquisendo i dati"
 ;Dialogs
 $DIALOG_MSGS[$LANG_IT][$STARTUPDIALOG] = "Bot per FORGE OF EMPIRE (FoE)"&@CRLF &"By: LightDestory" & @CRLF & "Version: " & $BuildType & " " & $Version & @CRLF & "Lavoro in corso..."
 $DIALOG_MSGS[$LANG_IT][$UPDATEDIALOG] = "Nuovo Aggioramento disponibile!" & @CRLF & "Visita il repo del progetto ora!"
 $DIALOG_MSGS[$LANG_IT][$NOUPDATEDIALOG] = "Stai utilizzando l'ultima versione." & @CRLF & "Divertiti :')!"
 $DIALOG_MSGS[$LANG_IT][$NONETDIALOG] = "Connessione a Internet non disponibile."
+$DIALOG_MSGS[$LANG_IT][$CANCELDIALOG] = "Hai premuto 'Cancel'"
+$DIALOG_MSGS[$LANG_IT][$INVALIDINPUTDIALOG] = "Hai immesso un input non valido."
+$DIALOG_MSGS[$LANG_IT][$MATERIALS_GETDATADIALOG] = "Inserisci il numero delle" & @CRLF & "costruzioni che vuoi farmare:"
+$DIALOG_MSGS[$LANG_IT][$CONFIRMINPUTDIALOG] = "Do you want to farm this quantity of building?"
 ;Texts
 $Texts[$LANG_IT][$FarmButton] = "Farm dei Materiali"
 $Texts[$LANG_IT][$DevInfo] = "Sviluppatore:"
@@ -91,5 +105,6 @@ $Texts[$LANG_IT][$VersionText] = "Versione:"
 $Texts[$LANG_IT][$CheckForUpdateBtn] = "Controlla Aggiornamenti"
 $Texts[$LANG_IT][$VisitGitHub_btn] = "Visita Github"
 $Texts[$LANG_IT][$VisitWebsitebtn] = "Visita il sito del Dev"
+$Texts[$LANG_IT][$BuildTypeText] = "Tipo di Build:"
 #EndRegion
 #EndRegion
