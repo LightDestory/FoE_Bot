@@ -1,4 +1,6 @@
 #Region Embedding
+;EXE version
+#AutoIt3Wrapper_Res_Fileversion=0.0.5.0
 ;Compire the project with the files embed
 #AutoIt3Wrapper_Res_File_Add=%SCRIPTDIR%\Files\images\DevIco.jpg, RT_RCDATA, dev, 0
 #AutoIt3Wrapper_Res_File_Add=%SCRIPTDIR%\Files\images\flags\en_flag.jpg, RT_RCDATA, en, 0
