@@ -72,7 +72,7 @@ gui_event_secoundarydown=
 gui_event_secoundaryup=
 gui_event_resized=
 gui_event_dropped=
-[0x00012248]
+[0x00012310]
 handle=402
 locked=1
 resize=
@@ -100,7 +100,7 @@ order=0
 tabpage=-1
 iconindex=
 textmode=text
-[0x0001224C]
+[0x00012314]
 handle=403
 locked=1
 resize=
@@ -128,7 +128,7 @@ order=3
 tabpage=-1
 iconindex=
 textmode=text
-[0x00012250]
+[0x00012318]
 handle=404
 locked=1
 resize=
@@ -156,7 +156,7 @@ order=1
 tabpage=-1
 iconindex=
 textmode=text
-[0x00012258]
+[0x00012320]
 handle=405
 locked=1
 resize=

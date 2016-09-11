@@ -4,14 +4,17 @@
 #include <WindowsConstants.au3>
 #Include <GuiButton.au3>
 #include <GuiTab.au3>
+#include <EditConstants.au3>
+#include <ComboConstants.au3>
 
 $FoE_GUI = GUICreate("FoE Bot By LightDestory",350,350,-1,-1,-1,-1)
 GUISetOnEvent($GUI_EVENT_CLOSE, "_Exit", $FoE_GUI)
 $tab = GUICtrlCreatetab(0,0,352,352,-1,-1)
 GuiCtrlSetState(-1,2048)
-$BotTab = GUICtrlCreateTabItem("Bot")
+$BotTab = GUICtrlCreateTabItem("[BOT_TAB]")
 $SettingTab = GUICtrlCreateTabItem("[SETTING_TAB_TITLE]")
 $AboutTab = GUICtrlCreateTabItem("[ABOUT_TAB_TITLE]")
+GUICtrlSetData($BotTab, $TITLE_MSGS[$CurrentLang][$BOT_TAB_TITLE])
 GUICtrlSetData($AboutTab, $TITLE_MSGS[$CurrentLang][$ABOUT_TAB_TITLE])
 GUICtrlSetData($SettingTab, $TITLE_MSGS[$CurrentLang][$SETTING_TAB_TITLE])
 GUICtrlCreateTabItem("")
@@ -20,6 +23,8 @@ GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,2)&GUICtrlRead ($tab, 1))
 $devinfolabel = GUICtrlCreateLabel("[DEVINFOTEXT]",20,60,90,15,-1,-1)
 GUICtrlSetBkColor(-1,"-2")
 GUICtrlSetData($devinfolabel, $Texts[$CurrentLang][$DevInfo])
+GUICtrlCreateTabItem("")
+GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,2)&GUICtrlRead ($tab, 1))
 $devnamelabel = GUICtrlCreateLabel("[DEVELOPER]",110,60,100,15,-1,-1)
 GUICtrlSetFont(-1,9,700,0,"MS Sans Serif")
 GUICtrlSetBkColor(-1,"-2")
@@ -49,10 +54,6 @@ GUICtrlSetOnEvent(-1,"_OpenWebsite")
 GUICtrlSetData($visitwebsitebtnGUI, $Texts[$CurrentLang][$VisitWebsitebtn])
 $DevIco = GUICtrlCreatePic("",270,50,50,50,-1,-1)
 _Resource_SetToCtrlID($DevIco, "dev")
-GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,0)&GUICtrlRead ($tab, 1))
-$StartbntGUI = GUICtrlCreateButton("[START_BOT_btn]",110,170,102,88,-1,-1)
-GUICtrlSetOnEvent(-1,"GetData")
-GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,2)&GUICtrlRead ($tab, 1))
 $buildtypeinfolabel = GUICtrlCreateLabel("[BUILD_TYPE_T]",20,100,90,15,-1,-1)
 GUICtrlSetBkColor(-1,"-2")
 GUICtrlSetData($buildtypeinfolabel, $Texts[$CurrentLang][$BuildTypeText])
@@ -60,6 +61,63 @@ $buildtypelabel = GUICtrlCreateLabel("[BULD_TYPE]",110,100,100,15,-1,-1)
 GUICtrlSetFont(-1,9,700,0,"MS Sans Serif")
 GUICtrlSetBkColor(-1,"-2")
 GUICtrlSetData($buildtypelabel, $BuildType)
+GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,0)&GUICtrlRead ($tab, 1))
+$selectscriptlabel = GUICtrlCreateLabel("[SELECT_SCRIPT]",10,35,135,15,-1,-1)
+GUICtrlSetBkColor(-1,"-2")
+GUICtrlSetData($selectscriptlabel, $Texts[$CurrentLang][$SelectScriptText])
+$scriptoptions = GUICtrlCreateGroup("[SCRIPT_OPTIONS]",13,60,327,215,-1,-1)
+GUICtrlSetBkColor(-1,"0xF0F0F0")
+GUICtrlSetData($scriptoptions, $TITLE_MSGS[$CurrentLang][$SCRIPT_OPTIONS_GROUP_TITLE])
+$delaytitlelabel = GUICtrlCreateLabel("[DELAY_TITLE]",20,85,180,15,-1,-1)
+GUICtrlSetFont(-1,8,700,0,"MS Sans Serif")
+GUICtrlSetBkColor(-1,"-2")
+GUICtrlSetData($delaytitlelabel, $TITLE_MSGS[$CurrentLang][$DELAY_TITLE])
+$delaydesclabel = GUICtrlCreateLabel("[DELAY_DESC]",30,105,300,46,-1,-1)
+GUICtrlSetBkColor(-1,"-2")
+GUICtrlSetData($delaydesclabel, $Texts[$CurrentLang][$Delay_Desc])
+$StartbntGUI = GUICtrlCreateButton("[START_BOT_btn]",15,290,320,50,-1,-1)
+GUICtrlSetOnEvent(-1,"Start")
+GUICtrlSetState(-1,BitOr($GUI_SHOW,$GUI_DISABLE))
+$delayinput = GUICtrlCreateInput("",183,168,80,20,$ES_NUMBER,$WS_EX_CLIENTEDGE)
+GUICtrlSetState(-1,BitOr($GUI_SHOW,$GUI_DISABLE))
+$currentdelay = GUICtrlCreateLabel("0",183,203,50,15,-1,-1)
+GUICtrlSetBkColor(-1,"-2")
+$setinputbtn = GUICtrlCreateButton("[SET]",270,168,70,20,-1,-1)
+GUICtrlSetOnEvent(-1,"SetDelay")
+GUICtrlSetState(-1,BitOr($GUI_SHOW,$GUI_DISABLE))
+GUICtrlSetData($setinputbtn, $Texts[$CurrentLang][$RunBotBtn])
+Func SetDelay()
+	Global $Delay = GUICtrlRead($delayinput)
+	GUICtrlSetData($currentdelay, $Delay)
+	GUICtrlSetState($StartbntGUI, $GUI_ENABLE)
+EndFunc
+$selectscript = GUICtrlCreateCombo("",155,32,180,21,$CBS_DROPDOWNLIST,-1)
+GUICtrlSetData(-1,"Script for Material")
+GUICtrlSetOnEvent(-1,"EnableOptions")
+Func EnableOptions()
+	GUICtrlSetState($delayinput, $GUI_ENABLE)
+	GUICtrlSetState($setinputbtn, $GUI_ENABLE)
+	SetID()
+EndFunc
+Func SetID()
+	Global $ScriptID = _GUICtrlComboBox_GetCurSel($selectscript)
+EndFunc
+$waitinfolabel = GUICtrlCreateLabel("[SET_WAIT_TIME]",20,170,150,15,-1,-1)
+GUICtrlSetBkColor(-1,"-2")
+GUICtrlSetData($waitinfolabel, $Texts[$CurrentLang][$Delay_SetInfo])
+$currentdelaylabel = GUICtrlCreateLabel("[CURRENT_WAIT]",30,203,150,15,-1,-1)
+GUICtrlSetBkColor(-1,"-2")
+GUICtrlSetData($currentdelaylabel, $Texts[$CurrentLang][$CurrentDelayInfo])
+Func Start()
+	If( $Delay == "" Or $Delay == 0) Then
+		MsgBox($MB_TOPMOST+$MB_ICONERROR, $TITLE_MSGS[$CurrentLang][$ERRORTITLE], $DIALOG_MSGS[$CurrentLang][$INVALIDINPUTDIALOG])
+	Else
+	Switch($ScriptID)
+		Case 0
+			GetData()
+	EndSwitch
+	EndIf
+EndFunc
 _GUICtrlTab_SetCurFocus($tab,0)
 
 
@@ -87,19 +145,15 @@ id=tab
 func=
 bgimage=
 handle=402
-code=GUICtrlSetData($AboutTab, $TITLE_MSGS[$CurrentLang][$ABOUT_TAB_TITLE])[BREAK]GUICtrlSetData($SettingTab, $TITLE_MSGS[$CurrentLang][$SETTING_TAB_TITLE])
+code=GUICtrlSetData($BotTab, $TITLE_MSGS[$CurrentLang][$BOT_TAB_TITLE])[BREAK]GUICtrlSetData($AboutTab, $TITLE_MSGS[$CurrentLang][$ABOUT_TAB_TITLE])[BREAK]GUICtrlSetData($SettingTab, $TITLE_MSGS[$CurrentLang][$SETTING_TAB_TITLE])
 tabpage=-1
 iconindex=
 resize=
 textmode=text
 order=0
 locked=1
-[0x000F0A32]
+[0x000E234A]
 order=0
-handle=402
-locked=0
-resize=
-code=
 [TABPAGE3]
 page=3
 text=[ABOUT_TAB_TITLE]
@@ -112,7 +166,7 @@ textmode=text
 handle=SettingTab
 [TABPAGE1]
 page=1
-text=Bot
+text=[BOT_TAB]
 textmode=text
 handle=BotTab
 [gui]
@@ -146,7 +200,7 @@ gui_event_secoundarydown=
 gui_event_secoundaryup=
 gui_event_resized=
 gui_event_dropped=
-[0x00180988]
+[0x005B1F24]
 handle=403
 locked=1
 resize=
@@ -170,11 +224,11 @@ fontattribute=0
 id=devinfolabel
 func=
 bgimage=
-order=3
+order=0
 tabpage=2
 iconindex=
 textmode=text
-[0x00061B62]
+[0x000B2344]
 handle=404
 locked=1
 resize=
@@ -198,11 +252,11 @@ fontattribute=0
 id=devnamelabel
 func=
 bgimage=
-order=4
+order=1
 tabpage=2
 iconindex=
 textmode=text
-[0x00161B46]
+[0x000807E0]
 handle=405
 locked=1
 resize=
@@ -226,11 +280,11 @@ fontattribute=0
 id=AboutGroup
 func=
 bgimage=
-order=5
+order=2
 tabpage=2
 iconindex=
 textmode=text
-[0x00051EFA]
+[0x000B1B54]
 handle=406
 locked=1
 resize=
@@ -254,11 +308,11 @@ fontattribute=0
 id=versioninfolabel
 func=
 bgimage=
-order=6
+order=3
 tabpage=2
 iconindex=
 textmode=text
-[0x00081EE8]
+[0x000B1B4A]
 handle=407
 locked=1
 resize=
@@ -282,11 +336,11 @@ fontattribute=0
 id=versionlabel
 func=
 bgimage=
-order=7
+order=4
 tabpage=2
 iconindex=
 textmode=text
-[0x00081B60]
+[0x001309E8]
 handle=408
 locked=1
 resize=
@@ -310,11 +364,11 @@ fontattribute=0
 id=checkupdatebtnGUI
 func=CheckUpdateMirror
 bgimage=
-order=8
+order=5
 tabpage=1
 iconindex=
 textmode=text
-[0x000C1B34]
+[0x00361F20]
 handle=409
 locked=1
 resize=
@@ -338,11 +392,11 @@ fontattribute=0
 id=visitgithubbtnGUI
 func=
 bgimage=
-order=9
+order=6
 tabpage=2
 iconindex=
 textmode=text
-[0x003B0978]
+[0x003C1F1E]
 handle=410
 locked=1
 resize=
@@ -366,23 +420,23 @@ fontattribute=0
 id=visitwebsitebtnGUI
 func=_OpenWebsite
 bgimage=
-order=10
+order=7
 tabpage=2
 iconindex=
 textmode=text
-[0x001A0148]
+[0x00031ED6]
 handle=411
 locked=0
 resize=
 code=
 type=button
-x=110
-y=170
-width=102
-height=88
+x=15
+y=290
+width=320
+height=50
 text=[START_BOT_btn]
 tooltip=
-state=$GUI_SHOW+$GUI_ENABLE
+state=$GUI_SHOW+$GUI_DISABLE
 style=
 exstyle=
 textcolour=0x000000
@@ -392,13 +446,13 @@ fontsize=8
 fontstyle=400
 fontattribute=0
 id=StartbntGUI
-func=GetData
+func=Start
 bgimage=
-order=11
+order=15
 tabpage=0
 iconindex=
 textmode=text
-[0x000F09EE]
+[0x00031EC6]
 handle=412
 locked=1
 resize=
@@ -422,12 +476,12 @@ fontattribute=0
 id=DevIco
 func=
 bgimage=
-order=11
+order=8
 tabpage=2
 iconindex=
 textmode=text
-[0x0040228E]
-handle=421
+[0x00071EB8]
+handle=413
 locked=1
 resize=
 code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$BuildTypeText])
@@ -450,12 +504,12 @@ fontattribute=0
 id=buildtypeinfolabel
 func=
 bgimage=
-order=12
+order=9
 tabpage=2
 iconindex=
 textmode=text
-[0x0027226C]
-handle=422
+[0x00031ECC]
+handle=414
 locked=1
 resize=
 code=GUICtrlSetData($control_handle, $BuildType)
@@ -481,5 +535,285 @@ bgimage=
 tabpage=2
 iconindex=
 textmode=text
+order=10
+[0x00031EE0]
+handle=415
+locked=1
+resize=
+code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$SelectScriptText])
+type=label
+x=10
+y=35
+width=135
+height=15
+text=[SELECT_SCRIPT]
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=-2
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=selectscriptlabel
+func=
+bgimage=
+order=11
+tabpage=0
+iconindex=
+textmode=text
+[0x00031EDC]
+handle=416
+locked=1
+resize=
+code=Func EnableOptions()[BREAK]	GUICtrlSetState($delayinput, $GUI_ENABLE)[BREAK]	GUICtrlSetState($setinputbtn, $GUI_ENABLE)[BREAK]	SetID()[BREAK]EndFunc[BREAK]Func SetID()[BREAK]	Global $ScriptID = _GUICtrlComboBox_GetCurSel($selectscript)[BREAK]EndFunc
+type=combo
+x=155
+y=32
+width=180
+height=21
+text=Script for Material
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=$CBS_DROPDOWNLIST
+exstyle=
+textcolour=0x000000
+bgcolour=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=selectscript
+func=EnableOptions
+bgimage=
+order=19
+tabpage=0
+iconindex=
+textmode=text
+[0x00081EB6]
+handle=417
+locked=1
+resize=
+code=GUICtrlSetData($control_handle, $TITLE_MSGS[$CurrentLang][$SCRIPT_OPTIONS_GROUP_TITLE])
+type=group
+x=13
+y=60
+width=327
+height=215
+text=[SCRIPT_OPTIONS]
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=0xF0F0F0
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=scriptoptions
+func=
+bgimage=
+order=12
+tabpage=0
+iconindex=
+textmode=text
+[0x00031ECA]
+handle=418
+locked=1
+resize=
+code=GUICtrlSetData($control_handle, $TITLE_MSGS[$CurrentLang][$DELAY_TITLE])
+type=label
+x=20
+y=85
+width=180
+height=15
+text=[DELAY_TITLE]
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=-2
+font=MS Sans Serif
+fontsize=8
+fontstyle=700
+fontattribute=0
+id=delaytitlelabel
+func=
+bgimage=
 order=13
+tabpage=0
+iconindex=
+textmode=text
+[0x00031EEE]
+handle=419
+locked=0
+resize=
+code=
+type=input
+x=183
+y=168
+width=80
+height=20
+text=
+tooltip=
+state=$GUI_SHOW+$GUI_DISABLE
+style=$ES_NUMBER
+exstyle=$WS_EX_CLIENTEDGE
+textcolour=0x000000
+bgcolour=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=delayinput
+func=
+bgimage=
+order=16
+tabpage=0
+iconindex=
+textmode=text
+[0x00121F0C]
+handle=420
+locked=1
+resize=
+code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$Delay_Desc])
+type=label
+x=30
+y=105
+width=300
+height=46
+text=[DELAY_DESC]
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=-2
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=delaydesclabel
+func=
+bgimage=
+order=14
+tabpage=0
+iconindex=
+textmode=text
+[0x00060866]
+handle=421
+locked=0
+resize=
+code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$Delay_SetInfo])
+type=label
+x=20
+y=170
+width=150
+height=15
+text=[SET_WAIT_TIME]
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=-2
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=waitinfolabel
+func=
+bgimage=
+order=20
+tabpage=0
+iconindex=
+textmode=text
+[0x000A1B3E]
+handle=422
+locked=0
+resize=
+code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$RunBotBtn])[BREAK]Func SetDelay()[BREAK]	Global $Delay = GUICtrlRead($delayinput)[BREAK]	GUICtrlSetData($currentdelay, $Delay)[BREAK]	GUICtrlSetState($StartbntGUI, $GUI_ENABLE)[BREAK]EndFunc
+type=button
+x=270
+y=168
+width=70
+height=20
+text=[SET]
+tooltip=
+state=$GUI_SHOW+$GUI_DISABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=setinputbtn
+func=SetDelay
+bgimage=
+order=18
+tabpage=0
+iconindex=
+textmode=text
+[0x0006067A]
+handle=423
+locked=0
+resize=
+code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$CurrentDelayInfo])[BREAK]Func Start()[BREAK]	If( $Delay == "" Or $Delay == 0) Then[BREAK]		MsgBox($MB_TOPMOST+$MB_ICONERROR, $TITLE_MSGS[$CurrentLang][$ERRORTITLE], $DIALOG_MSGS[$CurrentLang][$INVALIDINPUTDIALOG])[BREAK]	Else[BREAK]	Switch($ScriptID)[BREAK]		Case 0[BREAK]			GetData()[BREAK]	EndSwitch[BREAK]	EndIf[BREAK]EndFunc
+type=label
+x=30
+y=203
+width=150
+height=15
+text=[CURRENT_WAIT]
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=-2
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=currentdelaylabel
+func=
+bgimage=
+order=21
+tabpage=0
+iconindex=
+textmode=text
+[0x000B1B34]
+handle=432
+locked=0
+resize=
+code=
+type=label
+x=183
+y=203
+width=50
+height=15
+text=0
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=-2
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=currentdelay
+func=
+bgimage=
+order=17
+tabpage=0
+iconindex=
+textmode=text
 #ce

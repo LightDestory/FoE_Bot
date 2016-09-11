@@ -45,6 +45,7 @@ Func GetCoordinates()
 			   ;ConsoleWrite("Mouse Button Pressed Coordinate Build" & @CRLF & "X=" & $MousePos[0] & @CRLF & "Y=" & $MousePos[1] & @CRLF)
 			   $arrX[$iCount] =$MousePos[0]
 			   $arrY[$iCount] =$MousePos[1]
+				_DrawRect($MousePos[0], $MousePos[1], 10, 10, "Build" & ($iCount+1))
 			   $press = True
 			EndIf
 		WEnd
@@ -70,7 +71,7 @@ Func FarmSet()
 		Sleep(3000)
 		MouseClick($MOUSE_CLICK_LEFT, $farmitem[0][0], $farmitem[0][1])
 	Next
-	Sleep(305000)
+	Sleep($Delay*60000+5000)
 	FarmPickUP()
 EndFunc
 Func FarmPickUP()

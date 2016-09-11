@@ -15,6 +15,9 @@ Global $WebsiteURL = "http://www.lightdestoryweb.altervista.org/"
 #EndRegion
 #Region Includes
 ;All includes go here **BE CAREFUL WITH THE ORDER HOW THEY ARE INCLUDED**
+#include <GDIPlus.au3>
+#include <GuiComboBox.au3>
+#include <WindowsConstants.au3>
 #include <GuiConstants.au3>
 #include <Inet.au3>
 #include <Constants.au3>
@@ -26,7 +29,6 @@ Global $WebsiteURL = "http://www.lightdestoryweb.altervista.org/"
 #include "Imported Functions\ResourcesEx.au3"
 #include "Languages\Languages.au3"
 #include "Utils\Common.au3"
-#include "Scripts\materials.au3"
 #include "GUIs\LangSelector.isf"
 #EndRegion
 #Region Start
@@ -34,9 +36,10 @@ Global $WebsiteURL = "http://www.lightdestoryweb.altervista.org/"
 Opt("GUIOnEventMode", 1)
 GUISetState(@SW_SHOW, $LangSelector)
 WinWaitClose ("Select a Language")
-#Region INCLUDE OF GUIs
-;We have to include GUIs after the Language Selection otherwise the GUIs language will be always English
+#Region INCLUDE2
+;Some Includes are here due to some "used a undeclared variable" issue
 #include "GUIs\FoE_GUI.isf"
+#include "Scripts\materials.au3"
 #EndRegion
 MsgBox($MB_TOPMOST+$MB_ICONINFORMATION, $TITLE_MSGS[$CurrentLang][$STARTUPTITLE], $DIALOG_MSGS[$CurrentLang][$STARTUPDIALOG])
 _CheckUpdate(0)

@@ -1,5 +1,31 @@
-FoE Bot v. 0.4 - Change report
+FoE Bot v. 0.5 - Change report
 ------------------------------------------------------------------
+
+/////////////////////////////////////////
+///Date: 2016/09/11
+///Subject: First Release
+///Editor: LightDestory
+/////////////////////////////////////////
+- First Release
+
+/////////////////////////////////////////
+///Date: 2016/09/09
+///Subject: Improvement of CODE
+///Editor: LightDestory
+/////////////////////////////////////////
+Finished to improvement, adjust some code.
+
+/////////////////////////////////////////
+///Date: 2016/09/08
+///Subject: Huge Improvement of Code
+///Editor: LightDestory
+/////////////////////////////////////////
+- ADDED IMPORTED FUNCTIONS
+- ADDED UTILS
+- RE-DONE SOME GUI
+- ADDED REGIONS ON SOURCE FILE FOR A BETTER NAVIGATION
+- FIXED SOME FUNCTION
+- STARTED THE REWRITE OF MATERIAL SCRIPT
 
 /////////////////////////////////////////
 ///Date: 2016/09/05

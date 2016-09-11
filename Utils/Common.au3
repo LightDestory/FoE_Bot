@@ -43,4 +43,42 @@ EndFunc
 Func _OpenGithub()
 	ShellExecute($GitHubURL)
 EndFunc
+Func _DrawRect($x, $y, $w, $h, $name)
+    Local $hBitmap, $hGui, $hGraphic, $GuiSizeX = @DesktopWidth, $GuiSizeY = @DesktopHeight
+    Local $hWnd, $hDC, $pSize, $tSize, $pSource, $tSource, $pBlend, $tBlend, $hPen
+    Local $iOpacity = 255
+
+    $hGui = GUICreate($name & "_pos", $GuiSizeX, $GuiSizeY, -1, -1, $WS_POPUP, BitOR($WS_EX_LAYERED, $WS_EX_TOPMOST))
+    GUISetState()
+
+    _GDIPlus_Startup()
+    $hWnd = _WinAPI_GetDC(0)
+    $hDC = _WinAPI_CreateCompatibleDC($hWnd)
+    $hBitmap = _WinAPI_CreateCompatibleBitmap($hWnd, $GuiSizeX, $GuiSizeY)
+    _WinAPI_SelectObject($hDC, $hBitmap)
+    $hGraphic = _GDIPlus_GraphicsCreateFromHDC($hDC)
+
+    $hPen = _GDIPlus_PenCreate(0xFFFF0000, 3)
+
+    $tSize = DllStructCreate($tagSIZE)
+    $pSize = DllStructGetPtr($tSize)
+    DllStructSetData($tSize, "X", $GuiSizeX)
+    DllStructSetData($tSize, "Y", $GuiSizeY)
+    $tSource = DllStructCreate($tagPOINT)
+    $pSource = DllStructGetPtr($tSource)
+    $tBlend = DllStructCreate($tagBLENDFUNCTION)
+    $pBlend = DllStructGetPtr($tBlend)
+    DllStructSetData($tBlend, "Alpha", $iOpacity)
+    DllStructSetData($tBlend, "Format", 1)
+
+    _GDIPlus_GraphicsDrawRect($hGraphic, $x, $y, $w, $h, $hPen)
+    _WinAPI_UpdateLayeredWindow($hGui, $hWnd, 0, $pSize, $hDC, $pSource, 0, $pBlend, $ULW_ALPHA)
+
+    _GDIPlus_PenDispose($hPen)
+    _GDIPlus_GraphicsDispose($hGraphic)
+    _WinAPI_ReleaseDC(0, $hWnd)
+    _WinAPI_DeleteObject($hBitmap)
+    _WinAPI_DeleteDC($hDC)
+    _GDIPlus_Shutdown()
+EndFunc
 #EndRegion
