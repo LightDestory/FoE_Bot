@@ -1,11 +1,14 @@
-#Region Embedding
-;EXE version
+#Region ;**** Directives created by AutoIt3Wrapper_GUI ****
+#AutoIt3Wrapper_UseX64=n
+#AutoIt3Wrapper_Res_Comment=FoE bot By LightDestory
+#AutoIt3Wrapper_Res_Description=A simple Bot for FoE written with AutoIT
 #AutoIt3Wrapper_Res_Fileversion=0.0.5.0
-;Compire the project with the files embed
-#AutoIt3Wrapper_Res_File_Add=%SCRIPTDIR%\Files\images\DevIco.jpg, RT_RCDATA, dev, 0
-#AutoIt3Wrapper_Res_File_Add=%SCRIPTDIR%\Files\images\flags\en_flag.jpg, RT_RCDATA, en, 0
-#AutoIt3Wrapper_Res_File_Add=%SCRIPTDIR%\Files\images\flags\it_flag.jpg, RT_RCDATA, it, 0
-#EndRegion
+#AutoIt3Wrapper_Res_Fileversion_AutoIncrement=p
+#AutoIt3Wrapper_Res_LegalCopyright=(C) Copyright LightDestory 2016-2017
+#AutoIt3Wrapper_Res_File_Add=C:\Users\Alex\Documents\GitHub\FoE_Bot\Files\images\DevIco.jpg, RT_RCDATA, dev, 0
+#AutoIt3Wrapper_Res_File_Add=C:\Users\Alex\Documents\GitHub\FoE_Bot\Files\images\flags\en_flag.jpg, RT_RCDATA, en, 0
+#AutoIt3Wrapper_Res_File_Add=C:\Users\Alex\Documents\GitHub\FoE_Bot\Files\images\flags\it_flag.jpg, RT_RCDATA, it, 0
+#EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 #Region Formal Information
 ;General Vars
 Global $Dev = "LightDestory"
