@@ -78,14 +78,15 @@ GUICtrlSetData($delaydesclabel, $Texts[$CurrentLang][$Delay_Desc])
 $StartbntGUI = GUICtrlCreateButton("[START_BOT_btn]",15,290,320,50,-1,-1)
 GUICtrlSetOnEvent(-1,"Start")
 GUICtrlSetState(-1,BitOr($GUI_SHOW,$GUI_DISABLE))
+GUICtrlSetData($StartbntGUI, $Texts[$CurrentLang][$RunBotBtn])
 $delayinput = GUICtrlCreateInput("",183,168,80,20,$ES_NUMBER,$WS_EX_CLIENTEDGE)
 GUICtrlSetState(-1,BitOr($GUI_SHOW,$GUI_DISABLE))
 $currentdelay = GUICtrlCreateLabel("0",183,203,50,15,-1,-1)
 GUICtrlSetBkColor(-1,"-2")
-$setinputbtn = GUICtrlCreateButton("[SET]",270,168,70,20,-1,-1)
+$setinputbtn = GUICtrlCreateButton("[SET]",265,168,70,20,-1,-1)
 GUICtrlSetOnEvent(-1,"SetDelay")
 GUICtrlSetState(-1,BitOr($GUI_SHOW,$GUI_DISABLE))
-GUICtrlSetData($setinputbtn, $Texts[$CurrentLang][$RunBotBtn])
+GUICtrlSetData($setinputbtn, $Texts[$CurrentLang][$setinputText])
 Func SetDelay()
 	Global $Delay = GUICtrlRead($delayinput)
 	GUICtrlSetData($currentdelay, $Delay)
@@ -152,7 +153,7 @@ resize=
 textmode=text
 order=0
 locked=1
-[0x000E234A]
+[0x0002252A]
 order=0
 [TABPAGE3]
 page=3
@@ -200,7 +201,7 @@ gui_event_secoundarydown=
 gui_event_secoundaryup=
 gui_event_resized=
 gui_event_dropped=
-[0x005B1F24]
+[0x00022526]
 handle=403
 locked=1
 resize=
@@ -228,7 +229,7 @@ order=0
 tabpage=2
 iconindex=
 textmode=text
-[0x000B2344]
+[0x0002251A]
 handle=404
 locked=1
 resize=
@@ -256,7 +257,7 @@ order=1
 tabpage=2
 iconindex=
 textmode=text
-[0x000807E0]
+[0x00022512]
 handle=405
 locked=1
 resize=
@@ -284,7 +285,7 @@ order=2
 tabpage=2
 iconindex=
 textmode=text
-[0x000B1B54]
+[0x0002250A]
 handle=406
 locked=1
 resize=
@@ -312,7 +313,7 @@ order=3
 tabpage=2
 iconindex=
 textmode=text
-[0x000B1B4A]
+[0x00022502]
 handle=407
 locked=1
 resize=
@@ -340,7 +341,7 @@ order=4
 tabpage=2
 iconindex=
 textmode=text
-[0x001309E8]
+[0x000224FA]
 handle=408
 locked=1
 resize=
@@ -368,7 +369,7 @@ order=5
 tabpage=1
 iconindex=
 textmode=text
-[0x00361F20]
+[0x000224F2]
 handle=409
 locked=1
 resize=
@@ -396,7 +397,7 @@ order=6
 tabpage=2
 iconindex=
 textmode=text
-[0x003C1F1E]
+[0x000224E8]
 handle=410
 locked=1
 resize=
@@ -424,11 +425,11 @@ order=7
 tabpage=2
 iconindex=
 textmode=text
-[0x00031ED6]
+[0x000924E6]
 handle=411
 locked=0
 resize=
-code=
+code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$RunBotBtn])
 type=button
 x=15
 y=290
@@ -452,7 +453,7 @@ order=15
 tabpage=0
 iconindex=
 textmode=text
-[0x00031EC6]
+[0x000224F0]
 handle=412
 locked=1
 resize=
@@ -480,7 +481,7 @@ order=8
 tabpage=2
 iconindex=
 textmode=text
-[0x00071EB8]
+[0x000224F8]
 handle=413
 locked=1
 resize=
@@ -508,7 +509,7 @@ order=9
 tabpage=2
 iconindex=
 textmode=text
-[0x00031ECC]
+[0x00022500]
 handle=414
 locked=1
 resize=
@@ -536,7 +537,7 @@ tabpage=2
 iconindex=
 textmode=text
 order=10
-[0x00031EE0]
+[0x00022508]
 handle=415
 locked=1
 resize=
@@ -564,7 +565,7 @@ order=11
 tabpage=0
 iconindex=
 textmode=text
-[0x00031EDC]
+[0x00022514]
 handle=416
 locked=1
 resize=
@@ -592,7 +593,7 @@ order=19
 tabpage=0
 iconindex=
 textmode=text
-[0x00081EB6]
+[0x00022528]
 handle=417
 locked=1
 resize=
@@ -620,7 +621,7 @@ order=12
 tabpage=0
 iconindex=
 textmode=text
-[0x00031ECA]
+[0x00022534]
 handle=418
 locked=1
 resize=
@@ -648,7 +649,7 @@ order=13
 tabpage=0
 iconindex=
 textmode=text
-[0x00031EEE]
+[0x0002253C]
 handle=419
 locked=0
 resize=
@@ -676,7 +677,7 @@ order=16
 tabpage=0
 iconindex=
 textmode=text
-[0x00121F0C]
+[0x00022544]
 handle=420
 locked=1
 resize=
@@ -704,7 +705,7 @@ order=14
 tabpage=0
 iconindex=
 textmode=text
-[0x00060866]
+[0x00072510]
 handle=421
 locked=0
 resize=
@@ -732,13 +733,13 @@ order=20
 tabpage=0
 iconindex=
 textmode=text
-[0x000A1B3E]
+[0x000B104C]
 handle=422
-locked=0
+locked=1
 resize=
-code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$RunBotBtn])[BREAK]Func SetDelay()[BREAK]	Global $Delay = GUICtrlRead($delayinput)[BREAK]	GUICtrlSetData($currentdelay, $Delay)[BREAK]	GUICtrlSetState($StartbntGUI, $GUI_ENABLE)[BREAK]EndFunc
+code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$setinputText])[BREAK]Func SetDelay()[BREAK]	Global $Delay = GUICtrlRead($delayinput)[BREAK]	GUICtrlSetData($currentdelay, $Delay)[BREAK]	GUICtrlSetState($StartbntGUI, $GUI_ENABLE)[BREAK]EndFunc
 type=button
-x=270
+x=265
 y=168
 width=70
 height=20
@@ -760,7 +761,7 @@ order=18
 tabpage=0
 iconindex=
 textmode=text
-[0x0006067A]
+[0x000F10D2]
 handle=423
 locked=0
 resize=
@@ -788,8 +789,8 @@ order=21
 tabpage=0
 iconindex=
 textmode=text
-[0x000B1B34]
-handle=432
+[0x00101066]
+handle=424
 locked=0
 resize=
 code=

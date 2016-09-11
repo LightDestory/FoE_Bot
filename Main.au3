@@ -9,7 +9,7 @@
 #Region Formal Information
 ;General Vars
 Global $Dev = "LightDestory"
-Global $Version = 0.4
+Global $Version = 0.5
 Global $BuildType = "Alpha"
 Global $UpdateURL = "https://raw.githubusercontent.com/LightDestory/FoE_Bot/master/version.txt"
 Global $GitHubURL = "https://github.com/LightDestory/FoE_Bot"

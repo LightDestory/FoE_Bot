@@ -50,6 +50,7 @@ Const $RunBotBtn = 9
 Const $Delay_Desc = 10
 Const $Delay_SetInfo = 11
 Const $CurrentDelayInfo = 12
+Const $setinputText = 13
 #EndRegion
 #Region Language Translation
 ;--------------Text Translated;--------------
@@ -91,6 +92,7 @@ $Texts[$LANG_EN][$RunBotBtn] = "Run"
 $Texts[$LANG_EN][$Delay_SetInfo] = "Pick UP every: (minutes)"
 $Texts[$LANG_EN][$Delay_Desc] = "Set a 'wait time' to farm what do you want. It is needed to farm a specific building (like processes every 5mins)."
 $Texts[$LANG_EN][$CurrentDelayInfo] = "Current Wait Time:"
+$Texts[$LANG_EN][$setinputText] = "Set"
 #EndRegion
 #Region ITALIAN
 ;***IT***
@@ -131,5 +133,6 @@ $Texts[$LANG_IT][$RunBotBtn] = "Run"
 $Texts[$LANG_IT][$Delay_SetInfo] = "Raccogli ogni: (minuti)"
 $Texts[$LANG_IT][$Delay_Desc] = "Imposta un 'tempo di attesa' per farmare quello che vuoi. Esso è necessario per farmare costruzioni specifiche (come i processi ogni 5 minuti)."
 $Texts[$LANG_IT][$CurrentDelayInfo] = "Tempo di Attesa corrente:"
+$Texts[$LANG_IT][$setinputText] = "Imposta"
 #EndRegion
 #EndRegion
