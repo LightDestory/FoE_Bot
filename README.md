@@ -11,7 +11,7 @@ A simple work in progrss Bot for FoE written with AutoIT
 ## :large_orange_diamond: TODO :scream:
 - [x] Basic Function
 - [x] GUI
-- [ ] Auto-Farm Money
+- [x] Auto-Farm Money
 
 ## :large_orange_diamond: License :copyright:
 [This Project is under GNU GPLv3] (https://github.com/LightDestory/FoE_Bot/blob/master/LICENSE)  
