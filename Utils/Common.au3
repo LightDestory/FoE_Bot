@@ -3,6 +3,10 @@
 Func _Exit()
 	Exit 0
 EndFunc
+Func Terminate()
+	MsgBox($MB_TOPMOST+$MB_ICONWARNING,$TITLE_MSGS[$CurrentLang][$WARNINGTITLE], $TITLE_MSGS[$CurrentLang][$TERMINATE_TITLE], 2)
+	_Exit()
+EndFunc
 Func _CheckConnection()
     Local $Status = DllCall('connect.dll', 'long', 'IsInternetConnected')
     If @error Then
@@ -43,7 +47,7 @@ EndFunc
 Func _OpenGithub()
 	ShellExecute($GitHubURL)
 EndFunc
-Func _DrawRect($x, $y, $w, $h, $name)
+Func _DrawRect($x, $y, $w, $h, $name, $mark)
     Local $hBitmap, $hGui, $hGraphic, $GuiSizeX = @DesktopWidth, $GuiSizeY = @DesktopHeight
     Local $hWnd, $hDC, $pSize, $tSize, $pSource, $tSource, $pBlend, $tBlend, $hPen
     Local $iOpacity = 255
@@ -58,7 +62,7 @@ Func _DrawRect($x, $y, $w, $h, $name)
     _WinAPI_SelectObject($hDC, $hBitmap)
     $hGraphic = _GDIPlus_GraphicsCreateFromHDC($hDC)
 
-    $hPen = _GDIPlus_PenCreate(0xFFFF0000, 3)
+    $hPen = _GDIPlus_PenCreate($mark, 3)
 
     $tSize = DllStructCreate($tagSIZE)
     $pSize = DllStructGetPtr($tSize)
@@ -80,5 +84,14 @@ Func _DrawRect($x, $y, $w, $h, $name)
     _WinAPI_DeleteObject($hBitmap)
     _WinAPI_DeleteDC($hDC)
     _GDIPlus_Shutdown()
+EndFunc
+Func _SetColorMark($markcolorID)
+	$ColorMark = $ColorsArray[$markcolorID][1]
+EndFunc
+Func _SetHotKeyStop($hotkeystopID)
+	$HotKeyStopKey = $HotKeysArray[$hotkeystopID][1]
+EndFunc
+Func _SetHotKeys()
+	HotKeySet($HotKeyStopKey, "Terminate")
 EndFunc
 #EndRegion

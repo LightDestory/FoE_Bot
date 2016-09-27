@@ -9,7 +9,7 @@
 
 $FoE_GUI = GUICreate("FoE Bot By LightDestory",350,350,-1,-1,-1,-1)
 GUISetOnEvent($GUI_EVENT_CLOSE, "_Exit", $FoE_GUI)
-$tab = GUICtrlCreatetab(0,0,352,352,-1,-1)
+$tab = GUICtrlCreatetab(-2,0,352,352,-1,-1)
 GuiCtrlSetState(-1,2048)
 $BotTab = GUICtrlCreateTabItem("[BOT_TAB]")
 $SettingTab = GUICtrlCreateTabItem("[SETTING_TAB_TITLE]")
@@ -20,105 +20,154 @@ GUICtrlSetData($SettingTab, $TITLE_MSGS[$CurrentLang][$SETTING_TAB_TITLE])
 GUICtrlCreateTabItem("")
 _GUICtrlTab_SetCurFocus($tab,-1)
 GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,2)&GUICtrlRead ($tab, 1))
-$devinfolabel = GUICtrlCreateLabel("[DEVINFOTEXT]",20,60,90,15,-1,-1)
+$devinfolabel = GUICtrlCreateLabel("[DEVINFOTEXT]",18,60,90,15,-1,-1)
 GUICtrlSetBkColor(-1,"-2")
 GUICtrlSetData($devinfolabel, $Texts[$CurrentLang][$DevInfo])
 GUICtrlCreateTabItem("")
 GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,2)&GUICtrlRead ($tab, 1))
-$devnamelabel = GUICtrlCreateLabel("[DEVELOPER]",110,60,100,15,-1,-1)
+$devnamelabel = GUICtrlCreateLabel("[DEVELOPER]",108,60,100,15,-1,-1)
 GUICtrlSetFont(-1,9,700,0,"MS Sans Serif")
 GUICtrlSetBkColor(-1,"-2")
 GUICtrlSetData($devnamelabel, $Texts[$CurrentLang][$DevName])
-$AboutGroup = GUICtrlCreateGroup("[ABOUT_GROUP_TITLE]",10,30,330,313,-1,-1)
+$AboutGroup = GUICtrlCreateGroup("[ABOUT_GROUP_TITLE]",8,30,330,313,-1,-1)
 GUICtrlSetBkColor(-1,"0xF0F0F0")
 GUICtrlSetData($AboutGroup, $TITLE_MSGS[$CurrentLang][$ABOUT_GROUP_TITLE])
-$versioninfolabel = GUICtrlCreateLabel("[VERSIONTEXT]",20,80,90,15,-1,-1)
+$versioninfolabel = GUICtrlCreateLabel("[VERSIONTEXT]",18,80,90,15,-1,-1)
 GUICtrlSetBkColor(-1,"-2")
 GUICtrlSetData($versioninfolabel, $Texts[$CurrentLang][$VersionText])
-$versionlabel = GUICtrlCreateLabel("[VERSION]",110,80,100,15,-1,-1)
+$versionlabel = GUICtrlCreateLabel("[VERSION]",108,80,100,15,-1,-1)
 GUICtrlSetFont(-1,9,700,0,"MS Sans Serif")
 GUICtrlSetBkColor(-1,"-2")
 GUICtrlSetData($versionlabel, $Version)
 GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,1)&GUICtrlRead ($tab, 1))
-$checkupdatebtnGUI = GUICtrlCreateButton("[CHECK_FOR_UPDATE]",10,310,330,30,-1,-1)
+$checkupdatebtnGUI = GUICtrlCreateButton("[CHECK_FOR_UPDATE]",8,310,330,30,-1,-1)
 GUICtrlSetOnEvent(-1,"CheckUpdateMirror")
 GUICtrlSetData($checkupdatebtnGUI, $Texts[$CurrentLang][$CheckForUpdateBtn])
 Func CheckUpdateMirror()
 	_CheckUpdate(1)
 EndFunc
 GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,2)&GUICtrlRead ($tab, 1))
-$visitgithubbtnGUI = GUICtrlCreateButton("[VISIT_GITHUB]",20,300,150,30,-1,-1)
+$visitgithubbtnGUI = GUICtrlCreateButton("[VISIT_GITHUB]",18,300,150,30,-1,-1)
 GUICtrlSetData($visitgithubbtnGUI, $Texts[$CurrentLang][$VisitGitHub_btn])
-$visitwebsitebtnGUI = GUICtrlCreateButton("[VISIT_DEV_WEBSITE]",180,300,150,30,-1,-1)
+$visitwebsitebtnGUI = GUICtrlCreateButton("[VISIT_DEV_WEBSITE]",178,300,150,30,-1,-1)
 GUICtrlSetOnEvent(-1,"_OpenWebsite")
 GUICtrlSetData($visitwebsitebtnGUI, $Texts[$CurrentLang][$VisitWebsitebtn])
-$DevIco = GUICtrlCreatePic("",270,50,50,50,-1,-1)
+GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,1)&GUICtrlRead ($tab, 1))
+$colorcombobox = GUICtrlCreateCombo("",220,40,115,21,$CBS_DROPDOWNLIST,-1)
+GUICtrlSetData(-1,"")
+For $abc = 0 To UBound($ColorsArray, $UBOUND_ROWS)-1
+	_GUICtrlComboBox_AddString($colorcombobox, $ColorsArray[$abc][0])
+Next
+_GUICtrlComboBox_SetCurSel($colorcombobox, 0)
+$hotkeycombobox = GUICtrlCreateCombo("",220,80,115,21,BitOr($CBS_DROPDOWNLIST,$WS_VSCROLL),-1)
+GUICtrlSetData(-1,"")
+For $abcd = 0 To UBound($HotKeysArray, $UBOUND_ROWS)-1
+	_GUICtrlComboBox_AddString($hotkeycombobox, $HotKeysArray[$abcd][0])
+Next
+_GUICtrlComboBox_SetCurSel($hotkeycombobox, 0)
+GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,2)&GUICtrlRead ($tab, 1))
+$DevIco = GUICtrlCreatePic("",268,50,50,50,-1,-1)
 _Resource_SetToCtrlID($DevIco, "dev")
-$buildtypeinfolabel = GUICtrlCreateLabel("[BUILD_TYPE_T]",20,100,90,15,-1,-1)
+$buildtypeinfolabel = GUICtrlCreateLabel("[BUILD_TYPE_T]",18,100,90,15,-1,-1)
 GUICtrlSetBkColor(-1,"-2")
 GUICtrlSetData($buildtypeinfolabel, $Texts[$CurrentLang][$BuildTypeText])
-$buildtypelabel = GUICtrlCreateLabel("[BULD_TYPE]",110,100,100,15,-1,-1)
+$buildtypelabel = GUICtrlCreateLabel("[BULD_TYPE]",108,100,100,15,-1,-1)
 GUICtrlSetFont(-1,9,700,0,"MS Sans Serif")
 GUICtrlSetBkColor(-1,"-2")
 GUICtrlSetData($buildtypelabel, $BuildType)
 GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,0)&GUICtrlRead ($tab, 1))
-$selectscriptlabel = GUICtrlCreateLabel("[SELECT_SCRIPT]",10,35,135,15,-1,-1)
+$selectscriptlabel = GUICtrlCreateLabel("[SELECT_SCRIPT]",8,35,135,15,-1,-1)
 GUICtrlSetBkColor(-1,"-2")
 GUICtrlSetData($selectscriptlabel, $Texts[$CurrentLang][$SelectScriptText])
-$scriptoptions = GUICtrlCreateGroup("[SCRIPT_OPTIONS]",13,60,327,215,-1,-1)
+$scriptoptions = GUICtrlCreateGroup("[SCRIPT_OPTIONS]",11,60,327,215,-1,-1)
 GUICtrlSetBkColor(-1,"0xF0F0F0")
 GUICtrlSetData($scriptoptions, $TITLE_MSGS[$CurrentLang][$SCRIPT_OPTIONS_GROUP_TITLE])
-$delaytitlelabel = GUICtrlCreateLabel("[DELAY_TITLE]",20,85,180,15,-1,-1)
+$delaytitlelabel = GUICtrlCreateLabel("[DELAY_TITLE]",18,85,180,15,-1,-1)
 GUICtrlSetFont(-1,8,700,0,"MS Sans Serif")
 GUICtrlSetBkColor(-1,"-2")
 GUICtrlSetData($delaytitlelabel, $TITLE_MSGS[$CurrentLang][$DELAY_TITLE])
-$delaydesclabel = GUICtrlCreateLabel("[DELAY_DESC]",30,105,300,46,-1,-1)
+$delaydesclabel = GUICtrlCreateLabel("[DELAY_DESC]",28,105,300,46,-1,-1)
 GUICtrlSetBkColor(-1,"-2")
 GUICtrlSetData($delaydesclabel, $Texts[$CurrentLang][$Delay_Desc])
-$StartbntGUI = GUICtrlCreateButton("[START_BOT_btn]",15,290,320,50,-1,-1)
+$StartbntGUI = GUICtrlCreateButton("[START_BOT_btn]",13,290,320,50,-1,-1)
 GUICtrlSetOnEvent(-1,"Start")
 GUICtrlSetState(-1,BitOr($GUI_SHOW,$GUI_DISABLE))
 GUICtrlSetData($StartbntGUI, $Texts[$CurrentLang][$RunBotBtn])
-$delayinput = GUICtrlCreateInput("",183,168,80,20,$ES_NUMBER,$WS_EX_CLIENTEDGE)
+$minutesradio = GUICtrlCreateRadio("[MINUTES_RADIO]",21,187,120,20,-1,-1)
+GUICtrlSetState(-1,BitOr($GUI_CHECKED,$GUI_SHOW,$GUI_DISABLE))
+GUICtrlSetData($minutesradio, $Texts[$CurrentLang][$MinutesRadioText])
+$hoursradio = GUICtrlCreateRadio("[HOURS_RADIO]",198,187,120,20,-1,-1)
+GUICtrlSetState(-1,BitOr($GUI_UNCHECKED,$GUI_SHOW,$GUI_DISABLE))
+GUICtrlSetData($hoursradio, $Texts[$CurrentLang][$HoursRadioText])
+$delayinput = GUICtrlCreateInput("",143,218,80,20,$ES_NUMBER,$WS_EX_CLIENTEDGE)
 GUICtrlSetState(-1,BitOr($GUI_SHOW,$GUI_DISABLE))
-$currentdelay = GUICtrlCreateLabel("0",183,203,50,15,-1,-1)
+$currentdelay = GUICtrlCreateLabel("0",181,246,116,15,-1,-1)
 GUICtrlSetBkColor(-1,"-2")
-$setinputbtn = GUICtrlCreateButton("[SET]",265,168,70,20,-1,-1)
+$setinputbtn = GUICtrlCreateButton("[SET]",248,218,70,20,-1,-1)
 GUICtrlSetOnEvent(-1,"SetDelay")
 GUICtrlSetState(-1,BitOr($GUI_SHOW,$GUI_DISABLE))
 GUICtrlSetData($setinputbtn, $Texts[$CurrentLang][$setinputText])
 Func SetDelay()
+	Local $TimeType
 	Global $Delay = GUICtrlRead($delayinput)
-	GUICtrlSetData($currentdelay, $Delay)
+	If GUICtrlRead($minutesradio) = $GUI_CHECKED Then
+                $TimeType = $Texts[$CurrentLang][$MinutesRadioText]
+				$Delay = $Delay*60000
+            Else
+                $TimeType = $Texts[$CurrentLang][$HoursRadioText]
+				$Delay = $Delay*3600000
+            EndIf
+	GUICtrlSetData($currentdelay, GUICtrlRead($delayinput) & " (" & $TimeType & ")")
 	GUICtrlSetState($StartbntGUI, $GUI_ENABLE)
 EndFunc
-$selectscript = GUICtrlCreateCombo("",155,32,180,21,$CBS_DROPDOWNLIST,-1)
-GUICtrlSetData(-1,"Script for Material")
+$selectscript = GUICtrlCreateCombo("",153,32,180,21,$CBS_DROPDOWNLIST,-1)
+GUICtrlSetData(-1,"Script for Material|Script for Money")
 GUICtrlSetOnEvent(-1,"EnableOptions")
 Func EnableOptions()
 	GUICtrlSetState($delayinput, $GUI_ENABLE)
 	GUICtrlSetState($setinputbtn, $GUI_ENABLE)
+	GUICtrlSetState($minutesradio, $GUI_ENABLE)
+	GUICtrlSetState($hoursradio, $GUI_ENABLE)
 	SetID()
 EndFunc
 Func SetID()
 	Global $ScriptID = _GUICtrlComboBox_GetCurSel($selectscript)
 EndFunc
-$waitinfolabel = GUICtrlCreateLabel("[SET_WAIT_TIME]",20,170,150,15,-1,-1)
+$waitinfolabel = GUICtrlCreateLabel("[SET_WAIT_TIME]",21,160,150,15,-1,-1)
 GUICtrlSetBkColor(-1,"-2")
 GUICtrlSetData($waitinfolabel, $Texts[$CurrentLang][$Delay_SetInfo])
-$currentdelaylabel = GUICtrlCreateLabel("[CURRENT_WAIT]",30,203,150,15,-1,-1)
+$currentdelaylabel = GUICtrlCreateLabel("[CURRENT_WAIT]",28,246,150,15,-1,-1)
 GUICtrlSetBkColor(-1,"-2")
 GUICtrlSetData($currentdelaylabel, $Texts[$CurrentLang][$CurrentDelayInfo])
 Func Start()
+	_SetColorMark(_GUICtrlComboBox_GetCurSel($colorcombobox))
+	_SetHotKeyStop(_GUICtrlComboBox_GetCurSel($hotkeycombobox))
+	_SetHotKeys()
 	If( $Delay == "" Or $Delay == 0) Then
 		MsgBox($MB_TOPMOST+$MB_ICONERROR, $TITLE_MSGS[$CurrentLang][$ERRORTITLE], $DIALOG_MSGS[$CurrentLang][$INVALIDINPUTDIALOG])
 	Else
-	Switch($ScriptID)
-		Case 0
-			GetData()
-	EndSwitch
+		$confirmStartUp = MsgBox($MB_ICONQUESTION+$MB_TOPMOST+$MB_YESNO, $TITLE_MSGS[$CurrentLang][$INFOTITLE],"Do you confirm the following settings?" _
+		& @CRLF & "Stop Hotkeys: " & GUICtrlRead($hotkeycombobox) & @CRLF & "Mark Color: " & GUICtrlRead($colorcombobox))
+		Switch $confirmStartUp
+			Case 6 ;YES
+				Switch($ScriptID)
+					Case 0
+						GetDataMaterials()
+					Case 1
+						GetDataMoney()
+				EndSwitch
+			Case 7 ;NO
+				;Your code here...
+		EndSwitch
 	EndIf
 EndFunc
+GUISwitch($FoE_GUI,_GUICtrlTab_SetCurFocus($tab,1)&GUICtrlRead ($tab, 1))
+$colormarkinfo = GUICtrlCreateLabel("[MARK_COLOR_TEXT]",20,42,180,15,-1,-1)
+GUICtrlSetBkColor(-1,"-2")
+GUICtrlSetData($colormarkinfo, $Texts[$CurrentLang][$ColorMarkText])
+$hotkeystoplabel = GUICtrlCreateLabel("[HOTKEY_STOP_TEXT",20,82,180,15,-1,-1)
+GUICtrlSetBkColor(-1,"-2")
+GUICtrlSetData($hotkeystoplabel, $Texts[$CurrentLang][$HotKey_StopText])
 _GUICtrlTab_SetCurFocus($tab,0)
 
 
@@ -126,7 +175,7 @@ _GUICtrlTab_SetCurFocus($tab,0)
 #cs
 [tab]
 type=tab
-x=0
+x=-2
 y=0
 width=352
 height=352
@@ -153,7 +202,7 @@ resize=
 textmode=text
 order=0
 locked=1
-[0x0002252A]
+[0x000123E8]
 order=0
 [TABPAGE3]
 page=3
@@ -201,13 +250,13 @@ gui_event_secoundarydown=
 gui_event_secoundaryup=
 gui_event_resized=
 gui_event_dropped=
-[0x00022526]
+[0x000123EE]
 handle=403
 locked=1
 resize=
 code=GUICtrlSetData($devinfolabel, $Texts[$CurrentLang][$DevInfo])
 type=label
-x=20
+x=18
 y=60
 width=90
 height=15
@@ -229,13 +278,13 @@ order=0
 tabpage=2
 iconindex=
 textmode=text
-[0x0002251A]
+[0x000123F2]
 handle=404
 locked=1
 resize=
 code=GUICtrlSetData($devnamelabel, $Texts[$CurrentLang][$DevName])
 type=label
-x=110
+x=108
 y=60
 width=100
 height=15
@@ -257,13 +306,13 @@ order=1
 tabpage=2
 iconindex=
 textmode=text
-[0x00022512]
+[0x000123F6]
 handle=405
 locked=1
 resize=
 code=GUICtrlSetData($AboutGroup, $TITLE_MSGS[$CurrentLang][$ABOUT_GROUP_TITLE])
 type=group
-x=10
+x=8
 y=30
 width=330
 height=313
@@ -285,13 +334,13 @@ order=2
 tabpage=2
 iconindex=
 textmode=text
-[0x0002250A]
+[0x000123FA]
 handle=406
 locked=1
 resize=
 code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$VersionText])
 type=label
-x=20
+x=18
 y=80
 width=90
 height=15
@@ -313,13 +362,13 @@ order=3
 tabpage=2
 iconindex=
 textmode=text
-[0x00022502]
+[0x000123FE]
 handle=407
 locked=1
 resize=
 code=GUICtrlSetData($versionlabel, $Version)
 type=label
-x=110
+x=108
 y=80
 width=100
 height=15
@@ -341,13 +390,13 @@ order=4
 tabpage=2
 iconindex=
 textmode=text
-[0x000224FA]
+[0x00012402]
 handle=408
 locked=1
 resize=
 code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$CheckForUpdateBtn])[BREAK]Func CheckUpdateMirror()[BREAK]	_CheckUpdate(1)[BREAK]EndFunc
 type=button
-x=10
+x=8
 y=310
 width=330
 height=30
@@ -369,13 +418,13 @@ order=5
 tabpage=1
 iconindex=
 textmode=text
-[0x000224F2]
+[0x00012406]
 handle=409
 locked=1
 resize=
 code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$VisitGitHub_btn])
 type=button
-x=20
+x=18
 y=300
 width=150
 height=30
@@ -397,13 +446,13 @@ order=6
 tabpage=2
 iconindex=
 textmode=text
-[0x000224E8]
+[0x0001240A]
 handle=410
 locked=1
 resize=
 code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$VisitWebsitebtn])
 type=button
-x=180
+x=178
 y=300
 width=150
 height=30
@@ -425,13 +474,13 @@ order=7
 tabpage=2
 iconindex=
 textmode=text
-[0x000924E6]
+[0x0001240E]
 handle=411
 locked=0
 resize=
 code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$RunBotBtn])
 type=button
-x=15
+x=13
 y=290
 width=320
 height=50
@@ -449,17 +498,17 @@ fontattribute=0
 id=StartbntGUI
 func=Start
 bgimage=
-order=15
+order=17
 tabpage=0
 iconindex=
 textmode=text
-[0x000224F0]
+[0x00012412]
 handle=412
 locked=1
 resize=
 code=_Resource_SetToCtrlID($DevIco, "dev")
 type=image
-x=270
+x=268
 y=50
 width=50
 height=50
@@ -477,17 +526,17 @@ fontattribute=0
 id=DevIco
 func=
 bgimage=
-order=8
+order=10
 tabpage=2
 iconindex=
 textmode=text
-[0x000224F8]
+[0x00012416]
 handle=413
 locked=1
 resize=
 code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$BuildTypeText])
 type=label
-x=20
+x=18
 y=100
 width=90
 height=15
@@ -505,17 +554,17 @@ fontattribute=0
 id=buildtypeinfolabel
 func=
 bgimage=
-order=9
+order=11
 tabpage=2
 iconindex=
 textmode=text
-[0x00022500]
+[0x0001241A]
 handle=414
 locked=1
 resize=
 code=GUICtrlSetData($control_handle, $BuildType)
 type=label
-x=110
+x=108
 y=100
 width=100
 height=15
@@ -536,14 +585,14 @@ bgimage=
 tabpage=2
 iconindex=
 textmode=text
-order=10
-[0x00022508]
+order=12
+[0x0001241E]
 handle=415
 locked=1
 resize=
 code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$SelectScriptText])
 type=label
-x=10
+x=8
 y=35
 width=135
 height=15
@@ -561,21 +610,21 @@ fontattribute=0
 id=selectscriptlabel
 func=
 bgimage=
-order=11
+order=13
 tabpage=0
 iconindex=
 textmode=text
-[0x00022514]
+[0x00012422]
 handle=416
 locked=1
 resize=
-code=Func EnableOptions()[BREAK]	GUICtrlSetState($delayinput, $GUI_ENABLE)[BREAK]	GUICtrlSetState($setinputbtn, $GUI_ENABLE)[BREAK]	SetID()[BREAK]EndFunc[BREAK]Func SetID()[BREAK]	Global $ScriptID = _GUICtrlComboBox_GetCurSel($selectscript)[BREAK]EndFunc
+code=Func EnableOptions()[BREAK]	GUICtrlSetState($delayinput, $GUI_ENABLE)[BREAK]	GUICtrlSetState($setinputbtn, $GUI_ENABLE)[BREAK]	GUICtrlSetState($minutesradio, $GUI_ENABLE)[BREAK]	GUICtrlSetState($hoursradio, $GUI_ENABLE)[BREAK]	SetID()[BREAK]EndFunc[BREAK]Func SetID()[BREAK]	Global $ScriptID = _GUICtrlComboBox_GetCurSel($selectscript)[BREAK]EndFunc
 type=combo
-x=155
+x=153
 y=32
 width=180
 height=21
-text=Script for Material
+text=Script for Material|Script for Money
 tooltip=
 state=$GUI_SHOW+$GUI_ENABLE
 style=$CBS_DROPDOWNLIST
@@ -589,17 +638,17 @@ fontattribute=0
 id=selectscript
 func=EnableOptions
 bgimage=
-order=19
+order=23
 tabpage=0
 iconindex=
 textmode=text
-[0x00022528]
+[0x0001242A]
 handle=417
 locked=1
 resize=
 code=GUICtrlSetData($control_handle, $TITLE_MSGS[$CurrentLang][$SCRIPT_OPTIONS_GROUP_TITLE])
 type=group
-x=13
+x=11
 y=60
 width=327
 height=215
@@ -617,17 +666,17 @@ fontattribute=0
 id=scriptoptions
 func=
 bgimage=
-order=12
+order=14
 tabpage=0
 iconindex=
 textmode=text
-[0x00022534]
+[0x0001242E]
 handle=418
 locked=1
 resize=
 code=GUICtrlSetData($control_handle, $TITLE_MSGS[$CurrentLang][$DELAY_TITLE])
 type=label
-x=20
+x=18
 y=85
 width=180
 height=15
@@ -645,18 +694,18 @@ fontattribute=0
 id=delaytitlelabel
 func=
 bgimage=
-order=13
+order=15
 tabpage=0
 iconindex=
 textmode=text
-[0x0002253C]
+[0x00012432]
 handle=419
-locked=0
+locked=1
 resize=
 code=
 type=input
-x=183
-y=168
+x=143
+y=218
 width=80
 height=20
 text=
@@ -673,17 +722,17 @@ fontattribute=0
 id=delayinput
 func=
 bgimage=
-order=16
+order=20
 tabpage=0
 iconindex=
 textmode=text
-[0x00022544]
+[0x00012436]
 handle=420
 locked=1
 resize=
 code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$Delay_Desc])
 type=label
-x=30
+x=28
 y=105
 width=300
 height=46
@@ -701,18 +750,18 @@ fontattribute=0
 id=delaydesclabel
 func=
 bgimage=
-order=14
+order=16
 tabpage=0
 iconindex=
 textmode=text
-[0x00072510]
+[0x0001243A]
 handle=421
 locked=0
 resize=
 code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$Delay_SetInfo])
 type=label
-x=20
-y=170
+x=21
+y=160
 width=150
 height=15
 text=[SET_WAIT_TIME]
@@ -729,18 +778,18 @@ fontattribute=0
 id=waitinfolabel
 func=
 bgimage=
-order=20
+order=24
 tabpage=0
 iconindex=
 textmode=text
-[0x000B104C]
+[0x0001243E]
 handle=422
 locked=1
 resize=
-code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$setinputText])[BREAK]Func SetDelay()[BREAK]	Global $Delay = GUICtrlRead($delayinput)[BREAK]	GUICtrlSetData($currentdelay, $Delay)[BREAK]	GUICtrlSetState($StartbntGUI, $GUI_ENABLE)[BREAK]EndFunc
+code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$setinputText])[BREAK]Func SetDelay()[BREAK]	Local $TimeType[BREAK]	Global $Delay = GUICtrlRead($delayinput)[BREAK]	If GUICtrlRead($minutesradio) = $GUI_CHECKED Then[BREAK]                $TimeType = $Texts[$CurrentLang][$MinutesRadioText][BREAK]				$Delay = $Delay*60000[BREAK]            Else[BREAK]                $TimeType = $Texts[$CurrentLang][$HoursRadioText][BREAK]				$Delay = $Delay*3600000[BREAK]            EndIf[BREAK]	GUICtrlSetData($currentdelay, GUICtrlRead($delayinput) & " (" & $TimeType & ")")[BREAK]	GUICtrlSetState($StartbntGUI, $GUI_ENABLE)[BREAK]EndFunc
 type=button
-x=265
-y=168
+x=248
+y=218
 width=70
 height=20
 text=[SET]
@@ -757,18 +806,18 @@ fontattribute=0
 id=setinputbtn
 func=SetDelay
 bgimage=
-order=18
+order=22
 tabpage=0
 iconindex=
 textmode=text
-[0x000F10D2]
+[0x00012442]
 handle=423
-locked=0
+locked=1
 resize=
-code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$CurrentDelayInfo])[BREAK]Func Start()[BREAK]	If( $Delay == "" Or $Delay == 0) Then[BREAK]		MsgBox($MB_TOPMOST+$MB_ICONERROR, $TITLE_MSGS[$CurrentLang][$ERRORTITLE], $DIALOG_MSGS[$CurrentLang][$INVALIDINPUTDIALOG])[BREAK]	Else[BREAK]	Switch($ScriptID)[BREAK]		Case 0[BREAK]			GetData()[BREAK]	EndSwitch[BREAK]	EndIf[BREAK]EndFunc
+code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$CurrentDelayInfo])[BREAK]Func Start()[BREAK]	_SetColorMark(_GUICtrlComboBox_GetCurSel($colorcombobox))[BREAK]	_SetHotKeyStop(_GUICtrlComboBox_GetCurSel($hotkeycombobox))[BREAK]	_SetHotKeys()[BREAK]	If( $Delay == "" Or $Delay == 0) Then[BREAK]		MsgBox($MB_TOPMOST+$MB_ICONERROR, $TITLE_MSGS[$CurrentLang][$ERRORTITLE], $DIALOG_MSGS[$CurrentLang][$INVALIDINPUTDIALOG])[BREAK]	Else[BREAK]		$confirmStartUp = MsgBox($MB_ICONQUESTION+$MB_TOPMOST+$MB_YESNO, $TITLE_MSGS[$CurrentLang][$INFOTITLE],"Do you confirm the following settings?" _[BREAK]		& @CRLF & "Stop Hotkeys: " & GUICtrlRead($hotkeycombobox) & @CRLF & "Mark Color: " & GUICtrlRead($colorcombobox))[BREAK]		Switch $confirmStartUp[BREAK]			Case 6 ;YES[BREAK]				Switch($ScriptID)[BREAK]					Case 0[BREAK]						GetDataMaterials()[BREAK]					Case 1[BREAK]						GetDataMoney()[BREAK]				EndSwitch[BREAK]			Case 7 ;NO[BREAK]				;Your code here...[BREAK]		EndSwitch[BREAK]	EndIf[BREAK]EndFunc
 type=label
-x=30
-y=203
+x=28
+y=246
 width=150
 height=15
 text=[CURRENT_WAIT]
@@ -785,19 +834,19 @@ fontattribute=0
 id=currentdelaylabel
 func=
 bgimage=
-order=21
+order=25
 tabpage=0
 iconindex=
 textmode=text
-[0x00101066]
+[0x00012446]
 handle=424
-locked=0
+locked=1
 resize=
 code=
 type=label
-x=183
-y=203
-width=50
+x=181
+y=246
+width=116
 height=15
 text=0
 tooltip=
@@ -813,8 +862,176 @@ fontattribute=0
 id=currentdelay
 func=
 bgimage=
-order=17
+order=21
 tabpage=0
+iconindex=
+textmode=text
+[0x0001244A]
+handle=425
+locked=1
+resize=
+code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$MinutesRadioText])
+type=radio
+x=21
+y=187
+width=120
+height=20
+text=[MINUTES_RADIO]
+tooltip=
+state=$GUI_CHECKED+$GUI_SHOW+$GUI_DISABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=0xF0F0F0
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=minutesradio
+func=
+bgimage=
+order=18
+tabpage=0
+iconindex=
+textmode=text
+[0x0001244E]
+handle=426
+locked=1
+resize=
+code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$HoursRadioText])
+type=radio
+x=198
+y=187
+width=120
+height=20
+text=[HOURS_RADIO]
+tooltip=
+state=$GUI_UNCHECKED+$GUI_SHOW+$GUI_DISABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=0xF0F0F0
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=hoursradio
+func=
+bgimage=
+order=19
+tabpage=0
+iconindex=
+textmode=text
+[0x00012452]
+handle=427
+locked=1
+resize=
+code=For $abc = 0 To UBound($ColorsArray, $UBOUND_ROWS)-1[BREAK]	_GUICtrlComboBox_AddString($control_handle, $ColorsArray[$abc][0])[BREAK]Next[BREAK]_GUICtrlComboBox_SetCurSel($control_handle, 0)
+type=combo
+x=220
+y=40
+width=115
+height=21
+text=
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=$CBS_DROPDOWNLIST
+exstyle=
+textcolour=0x000000
+bgcolour=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=colorcombobox
+func=
+bgimage=
+order=8
+tabpage=1
+iconindex=
+textmode=text
+[0x0001245A]
+handle=428
+locked=1
+resize=
+code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$ColorMarkText])
+type=label
+x=20
+y=42
+width=180
+height=15
+text=[MARK_COLOR_TEXT]
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=-2
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=colormarkinfo
+func=
+bgimage=
+order=26
+tabpage=1
+iconindex=
+textmode=text
+[0x0001245E]
+handle=429
+locked=1
+resize=
+code=For $abcd = 0 To UBound($HotKeysArray, $UBOUND_ROWS)-1[BREAK]	_GUICtrlComboBox_AddString($control_handle, $HotKeysArray[$abcd][0])[BREAK]Next[BREAK]_GUICtrlComboBox_SetCurSel($control_handle, 0)
+type=combo
+x=220
+y=80
+width=115
+height=21
+text=
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=$CBS_DROPDOWNLIST+$WS_VSCROLL
+exstyle=
+textcolour=0x000000
+bgcolour=
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=hotkeycombobox
+func=
+bgimage=
+order=9
+tabpage=1
+iconindex=
+textmode=text
+[0x00012466]
+handle=430
+locked=1
+resize=
+code=GUICtrlSetData($control_handle, $Texts[$CurrentLang][$HotKey_StopText])
+type=label
+x=20
+y=82
+width=180
+height=15
+text=[HOTKEY_STOP_TEXT
+tooltip=
+state=$GUI_SHOW+$GUI_ENABLE
+style=
+exstyle=
+textcolour=0x000000
+bgcolour=-2
+font=MS Sans Serif
+fontsize=8
+fontstyle=400
+fontattribute=0
+id=hotkeystoplabel
+func=
+bgimage=
+order=29
+tabpage=1
 iconindex=
 textmode=text
 #ce

@@ -27,6 +27,7 @@ Const $MATERIALS_GETDATATITLE = 8
 Const $BOT_TAB_TITLE = 9
 Const $SCRIPT_OPTIONS_GROUP_TITLE = 10
 Const $DELAY_TITLE = 11
+Const $TERMINATE_TITLE = 12
 ;Dialogs
 Const $STARTUPDIALOG = 0
 Const $UPDATEDIALOG = 1
@@ -51,6 +52,10 @@ Const $Delay_Desc = 10
 Const $Delay_SetInfo = 11
 Const $CurrentDelayInfo = 12
 Const $setinputText = 13
+Const $MinutesRadioText = 14
+Const $HoursRadioText = 15
+Const $ColorMarkText = 16
+Const $HotKey_StopText = 17
 #EndRegion
 #Region Language Translation
 ;--------------Text Translated;--------------
@@ -69,6 +74,7 @@ $TITLE_MSGS[$LANG_EN][$INFOTITLE] = "Info"
 $TITLE_MSGS[$LANG_EN][$MATERIALS_GETDATATITLE] = "Getting Data"
 $TITLE_MSGS[$LANG_EN][$SCRIPT_OPTIONS_GROUP_TITLE] = "Script's Options"
 $TITLE_MSGS[$LANG_EN][$DELAY_TITLE] = "Wait Time"
+$TITLE_MSGS[$LANG_EN][$TERMINATE_TITLE] = "Stopping..."
 ;Dialogs
 $DIALOG_MSGS[$LANG_EN][$STARTUPDIALOG] = "Bot for FORGE OF EMPIRE (FoE)"&@CRLF &"By: LightDestory" & @CRLF & "Version: " & $BuildType & " " & $Version & @CRLF & "Work in Progress..."
 $DIALOG_MSGS[$LANG_EN][$UPDATEDIALOG] = "New Update avaible!" & @CRLF & "Visit project's github repo now!"
@@ -89,10 +95,14 @@ $Texts[$LANG_EN][$VisitWebsitebtn] = "Visit Dev Website"
 $Texts[$LANG_EN][$BuildTypeText] = "Build Type:"
 $Texts[$LANG_EN][$SelectScriptText] = "Select a Script:"
 $Texts[$LANG_EN][$RunBotBtn] = "Run"
-$Texts[$LANG_EN][$Delay_SetInfo] = "Pick UP every: (minutes)"
+$Texts[$LANG_EN][$Delay_SetInfo] = "Pick UP every:"
 $Texts[$LANG_EN][$Delay_Desc] = "Set a 'wait time' to farm what do you want. It is needed to farm a specific building (like processes every 5mins)."
 $Texts[$LANG_EN][$CurrentDelayInfo] = "Current Wait Time:"
 $Texts[$LANG_EN][$setinputText] = "Set"
+$Texts[$LANG_EN][$MinutesRadioText] = "Minutes"
+$Texts[$LANG_EN][$HoursRadioText] = "Hours"
+$Texts[$LANG_EN][$ColorMarkText] = "Color for the Marks:"
+$Texts[$LANG_EN][$HotKey_StopText] = "Hotkey for the Stop shortcut:"
 #EndRegion
 #Region ITALIAN
 ;***IT***
@@ -109,6 +119,7 @@ $TITLE_MSGS[$LANG_IT][$INFOTITLE] = "Info"
 $TITLE_MSGS[$LANG_IT][$MATERIALS_GETDATATITLE] = "Acquisendo i dati"
 $TITLE_MSGS[$LANG_IT][$SCRIPT_OPTIONS_GROUP_TITLE] = "Opzioni dello Script"
 $TITLE_MSGS[$LANG_IT][$DELAY_TITLE] = "Tempo di Attesa"
+$TITLE_MSGS[$LANG_IT][$TERMINATE_TITLE] = "Arresto..."
 ;Dialogs
 $DIALOG_MSGS[$LANG_IT][$STARTUPDIALOG] = "Bot per FORGE OF EMPIRE (FoE)"&@CRLF &"By: LightDestory" & @CRLF & "Versione: " & $BuildType & " " & $Version & @CRLF & "Lavoro in corso..."
 $DIALOG_MSGS[$LANG_IT][$UPDATEDIALOG] = "Nuovo Aggioramento disponibile!" & @CRLF & "Visita il repo del progetto ora!"
@@ -128,11 +139,14 @@ $Texts[$LANG_IT][$VisitGitHub_btn] = "Visita Github"
 $Texts[$LANG_IT][$VisitWebsitebtn] = "Visita il sito del Dev"
 $Texts[$LANG_IT][$BuildTypeText] = "Tipo di Build:"
 $Texts[$LANG_IT][$SelectScriptText] = "Seleziona uno Script:"
-$Texts[$LANG_IT][$RunBotBtn] = "Esegui"
-$Texts[$LANG_IT][$RunBotBtn] = "Run"
-$Texts[$LANG_IT][$Delay_SetInfo] = "Raccogli ogni: (minuti)"
+$Texts[$LANG_IT][$RunBotBtn] = "Avvia"
+$Texts[$LANG_IT][$Delay_SetInfo] = "Raccogli ogni:"
 $Texts[$LANG_IT][$Delay_Desc] = "Imposta un 'tempo di attesa' per farmare quello che vuoi. Esso è necessario per farmare costruzioni specifiche (come i processi ogni 5 minuti)."
 $Texts[$LANG_IT][$CurrentDelayInfo] = "Tempo di Attesa corrente:"
 $Texts[$LANG_IT][$setinputText] = "Imposta"
+$Texts[$LANG_IT][$MinutesRadioText] = "Minuti"
+$Texts[$LANG_IT][$HoursRadioText] = "Ore"
+$Texts[$LANG_IT][$ColorMarkText] = "Colore deii Mark:"
+$Texts[$LANG_IT][$HotKey_StopText] = "Hotkey per la scorciatoia di arresto:"
 #EndRegion
 #EndRegion

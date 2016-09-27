@@ -1,5 +1,32 @@
-FoE Bot v. 0.5 - Change report
+FoE Bot v. 0.6 - Change report
 ------------------------------------------------------------------
+
+/////////////////////////////////////////
+///Date: 2016/09/28
+///Subject: Alpha 0.6 RELEASE
+///Editor: LightDestory
+/////////////////////////////////////////
+- ADDED STOP HOTKEY CHOICE
+- FIXED SOME CODE
+
+
+/////////////////////////////////////////
+///Date: 2016/09/27
+///Subject: Alpha 0.6
+///Editor: LightDestory
+/////////////////////////////////////////
+- ADDED Money Script
+- ADDED Mark Color Option
+- Fixed DLLClose missing
+- Fixed Some Code
+
+/////////////////////////////////////////
+///Date: 2016/09/23
+///Subject: Money Script
+///Editor: LightDestory
+/////////////////////////////////////////
+- Added the Money Script (It is just the base but it is working!)
+- Added the Option to choose the Delay (Minutes/Hours)
 
 /////////////////////////////////////////
 ///Date: 2016/09/11

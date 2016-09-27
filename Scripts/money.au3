@@ -1,6 +1,6 @@
 Global $dll = DllOpen("user32.dll")
 Global $press = False
-Func GetDataMaterials()
+Func GetDataMoney()
 	$DataConfirm = False
 	While ($DataConfirm == False)
 		Global $GettingDataInput = _InputBox($TITLE_MSGS[$CurrentLang][$MATERIALS_GETDATATITLE], $DIALOG_MSGS[$CurrentLang][$MATERIALS_GETDATADIALOG], "", "", 0, 1, "", 300, 200, -1, -1, $WS_SIZEBOX, $WS_EX_TOPMOST)
@@ -21,18 +21,16 @@ Func GetDataMaterials()
 	WEnd
 	Global $arrX[$GettingDataInput]
 	Global $arrY[$GettingDataInput]
-	Global $farmitem[1][2]
-	GetCoordinatesMaterials()
-	ConfirmCoordinatesMaterials()
-	FarmSetMaterials()
+	GetCoordinatesMoney()
+	ConfirmCoordinatesMoney()
+	FarmSetMoney()
 EndFunc
-Func ConfirmCoordinatesMaterials()
+Func ConfirmCoordinatesMoney()
    For $iCount = 0 To ($GettingDataInput-1)
 	  MsgBox($MB_TOPMOST,"Coordinates", "Coordinate Number: " & ($iCount+1) &@CRLF &"X:" & $arrX[$iCount] & @CRLF & "Y:" & $arrY[$iCount])
    Next
-   MsgBox($MB_TOPMOST,"Coordinates", "Coordinate Farm Item " &@CRLF &"X:" & $farmitem[0][0] & @CRLF & "Y:" & $farmitem[0][1])
 EndFunc
-Func GetCoordinatesMaterials()
+Func GetCoordinatesMoney()
 	For $iCount = 0 To ($GettingDataInput-1)
 		$press = False
 		MsgBox($MB_TOPMOST,"Getting Data", "Please Click OK and click on Build Number: " & ($iCount+1))
@@ -48,35 +46,21 @@ Func GetCoordinatesMaterials()
 			EndIf
 		WEnd
 	Next
-	$press = false
-	MsgBox($MB_TOPMOST, "Getting Data", "Press OK when you are ready to click the FARM ITEM AND THEN CLICK ON BUTTON")
-	While $press == False
-		Sleep(10)
-		If _IsPressed("01", $dll) Then
-			$MousePos = MouseGetPos()
-			;ConsoleWrite("Mouse Button Pressed Coordinate Farm Item" & @CRLF & "X=" & $MousePos[0] & @CRLF & "Y=" & $MousePos[1] & @CRLF)
-			$farmitem[0][0] =$MousePos[0]
-			$farmitem[0][1] =$MousePos[1]
-			$press = True
-		EndIf
-	WEnd
 	DllClose($dll)
 EndFunc
-Func FarmSetMaterials()
+Func FarmSetMoney()
 	Sleep(1500)
 	For $c = 0 to ($GettingDataInput-1)
 		Sleep(3000)
 		MouseClick($MOUSE_CLICK_LEFT, $arrX[$c], $arrY[$c])
-		Sleep(3000)
-		MouseClick($MOUSE_CLICK_LEFT, $farmitem[0][0], $farmitem[0][1])
 	Next
 	Sleep($Delay+5000)
-	FarmPickUPMaterials()
+	FarmPickUPMoney()
 EndFunc
-Func FarmPickUPMaterials()
+Func FarmPickUPMoney()
 	For $c = 0 to ($GettingDataInput-1)
 		MouseClick($MOUSE_CLICK_LEFT, $arrX[$c], $arrY[$c])
 		Sleep(2500)
 	Next
-	FarmSetMaterials()
+	FarmSetMoney()
 EndFunc
