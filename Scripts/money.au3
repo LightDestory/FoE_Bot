@@ -49,11 +49,6 @@ Func GetCoordinatesMoney()
 	DllClose($dll)
 EndFunc
 Func FarmSetMoney()
-	Sleep(1500)
-	For $c = 0 to ($GettingDataInput-1)
-		Sleep(3000)
-		MouseClick($MOUSE_CLICK_LEFT, $arrX[$c], $arrY[$c])
-	Next
 	Sleep($Delay+5000)
 	FarmPickUPMoney()
 EndFunc
