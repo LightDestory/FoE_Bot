@@ -2,7 +2,7 @@
 #AutoIt3Wrapper_UseX64=n
 #AutoIt3Wrapper_Res_Comment=FoE bot By LightDestory
 #AutoIt3Wrapper_Res_Description=A simple Bot for FoE written with AutoIT
-#AutoIt3Wrapper_Res_Fileversion=0.0.7.0
+#AutoIt3Wrapper_Res_Fileversion=0.0.8.0
 #AutoIt3Wrapper_Res_LegalCopyright=(C) Copyright LightDestory 2016-2017
 #AutoIt3Wrapper_Res_File_Add=Files\images\DevIco.jpg, RT_RCDATA, dev, 0
 #AutoIt3Wrapper_Res_File_Add=Files\images\flags\en_flag.jpg, RT_RCDATA, en, 0
@@ -11,7 +11,7 @@
 #Region Formal Information
 ;General Vars
 Global $Dev = "LightDestory"
-Global $Version = 0.7
+Global $Version = 0.8	
 Global $BuildType = "Alpha"
 Global $UpdateURL = "https://raw.githubusercontent.com/LightDestory/FoE_Bot/master/version.txt"
 Global $GitHubURL = "https://github.com/LightDestory/FoE_Bot"
@@ -24,6 +24,7 @@ Global $WebsiteURL = "http://www.lightdestoryweb.altervista.org/"
 #include <GUIConstantsEx.au3>
 #include <ComboConstants.au3>
 #include <WindowsConstants.au3>
+#include <WinAPIConstants.au3>
 #include <GuiConstants.au3>
 #include <Inet.au3>
 #include <Constants.au3>
